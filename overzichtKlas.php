@@ -27,6 +27,7 @@ session_start();
         }
         echo "</tr>";
     }
+
     if(isset($_POST["klaslink"]))
     {
         $_SESSION["klas"]=$_POST["klaslink"];
