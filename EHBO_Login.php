@@ -55,14 +55,13 @@ if(isset($_POST['cmdSend'])) {
                 $row = mysqli_fetch_assoc($Result);
                 if ($row != null)
                 {
-                    $WWfromDB = $row['wachtwoord'];
-                    echo $WWfromDB.'<br>';
-                    $WWInput = $_POST['password'];
 
-                    if($WWfromDB == $WWInput){
-                        echo "inlog geslaagd";
+
+                    if (password_verify($_POST['password'], $row['wachtwoord'])){
 
                         $Role = $row['rol'];
+                        echo $Role;
+                        echo "inlog geslaagd"."<br>";
 
 
                     }
@@ -95,13 +94,13 @@ if(isset($_POST['cmdSend'])) {
         echo '<br>verbinding niet gelukt' . mysqli_connect_error();
     }
 
-    if ($Role = "gebruiker")
+    if ($Role == "gebruiker")
     {
         $_SESSION["Rol"] = "gebruiker";
         header("location: Home_Gebruiker.php");
     }
 
-    if ($Role = "beheerder")
+    if ($Role == "beheerder")
     {
         $_SESSION["Rol"] = "beheerder";
         header("location: Home_Beheerder.php");
