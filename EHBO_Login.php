@@ -1,19 +1,35 @@
 <html>
 <head>
     <title>Login</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <body>
+<table>
+    <tr>
+        <td>
+            <a href="https://www.gtibeveren.be"><img src="assets/images/logoBV.png" alt="" align="left"/></a>
+        </td>
+        <td width="80%">
+            <!--img src="images/cheese3.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;"/-->
+        </td>
+
+    </tr>
+</table>
     <form method="post">
 <div class="login">
     <h1>Login</h1>
-        <label for="username">
-        </label>
-        <input type="text" name="username" placeholder="Username" id="username" required><!-- input textbox voor de email -->
-        <label for="password">
 
-        </label>
+    <label for="username">
+        <i class="fas fa-user"></i>
+    </label>
+        <input type="text" name="username" placeholder="Username" id="username" required><!-- input textbox voor de email -->
+    <label for="password">
+        <i class="fas fa-lock"></i>
+    </label>
         <input type="password" name="password" placeholder="Password" id="password" required><!-- input textbox voor het wachtwoord -->
         <input type="submit" value="Login" Name="cmdSend">
+
 
 
 
@@ -97,13 +113,13 @@ if(isset($_POST['cmdSend'])) {
     if ($Role == "gebruiker")
     {
         $_SESSION["Rol"] = "gebruiker";
-        header("location: Home_Gebruiker.php");
+        header("location: overzichtKlas.php");
     }
 
     if ($Role == "beheerder")
     {
         $_SESSION["Rol"] = "beheerder";
-        header("location: Home_Beheerder.php");
+        header("location: overzichtklas.php");
     }
 
 }

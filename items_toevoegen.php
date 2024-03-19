@@ -2,8 +2,11 @@
 <body>
 <form method="post">
     <label>Naam Item: </label>
-    <input type="Naam" name="Naam"/>
+    <input type="Text" name="Naam"/>
     <input type="submit" value="Toevoegen" name="cmdVerstuur"/>
+</form>
+<form ethod="post" action="OverzichtDoos.php">
+    <input type="submit" value="Terugkeren" name="cmdTerug"/>
 </form>
 </body>
 
@@ -23,7 +26,8 @@ if(isset($_POST['cmdVerstuur'])) {
     if ($link) {
         //3: opbouw van de query
         //query met een parameters
-        $query = 'ALTER TABLE db_ehbo.dozen ADD COLUMN ? VARCHAR(255)';
+        $Item = $_POST['Naam'];
+        $query = 'ALTER TABLE db_ehbo.dozen ADD COLUMN '.$Item.' VARCHAR(255)';
         echo $query . '<br>';
 
         //4a: statement initialiseren op basis van de link
@@ -32,20 +36,24 @@ if(isset($_POST['cmdVerstuur'])) {
         //4b: prepared statement maken op basis van de query en het statement
         if (mysqli_stmt_prepare($statement, $query)) {
             //4c: parameter een waarde geven (= vraagteken vervangen)
-            mysqli_stmt_bind_param($statement, 's', $Item);
+          //  mysqli_stmt_bind_param($statement, 's', $Item);
             $Item = $_POST['Naam'];
 
 
-            mysqli_stmt_execute($statement);
+
             if (mysqli_stmt_execute($statement))
             {
-                echo 'Colom toegoevoegd ';
+                echo 'kolom toegoevoegd ';
+                //echo '<form action="OverzichtDoos.php">';
+
+
             }
             else{
                 echo 'kolom niet toegevoegd'.mysqli_stmt_error($statement);
             }
 
         }
+
         else
         {
             echo mysqli_stmt_error($statement);
@@ -59,4 +67,3 @@ if(isset($_POST['cmdVerstuur'])) {
 
 }
 ?>
-
