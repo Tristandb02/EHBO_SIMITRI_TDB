@@ -1,3 +1,15 @@
+<html>
+<form method="post">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Overzicht Doos</title>
+    </head>
+    <body>
+
+
+
+
 <?php
 include "Verbinding.php";
 session_start();
@@ -11,6 +23,7 @@ $query = "SELECT COLUMN_NAME
           LIMIT 2, 999"; // Skipping the first two columns
 
 $stmt = mysqli_stmt_init($link);
+$columnNames = array(); // Initialize an array to store column names
 
 if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_execute($stmt);
@@ -21,6 +34,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Fetch column names and display them as table headers
     while ($row = mysqli_fetch_assoc($res)) {
         echo "<th>" . $row['COLUMN_NAME'] . "</th>";
+        $columnNames[] = $row['COLUMN_NAME']; // Append column name to the array
     }
     echo "</tr>";
 
@@ -38,17 +52,77 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                     echo "<td>".$value."</td>";
                 }
             }
-            echo "</tr>";
+            echo "</tr><tr>";
+            foreach ($columnNames as $columnName) {
+                // Here you can access each column name and perform actions as needed
+                switch ($columnName) {
+                    case "schaar":
+                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Nee<br><input value='ja' type='radio' name='".$columnName."'>Ja</td>";
+                        break;
+                    case "ontsmettingsmiddel":
+                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Nee<br><input value='weinig' type='radio' name='".$columnName."'>Weinig<br><input value='ja' type='radio' name='".$columnName."'>Ja</td>";
+                        break;
+                    case "handschoenen":
+                        echo "<td>Aantal:<input type='number' style='width: 40px' name='".$columnName."'></td>";
+                        break;
+                    default:
+                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Nee<br><input value='ja' type='radio' name='".$columnName."'>Ja</td>";
+                        break;
+                }
+
+            }
         }
+        echo "</table>";
+
+        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'>";
+
+
+
+
+
+
+
+
+
+
     } else {
         echo "Error fetching data: " . mysqli_error($link);
     }
 
-    echo "</table>";
+
 } else {
     echo "Error fetching column names: " . mysqli_error($link);
+}
+
+
+
+if(isset($_POST["btnAanpassen"]))
+{
+    //UPDATE `db_ehbo`.`dozen` SET `schaar` = 'ja', `ontsmettingsmiddel` = 'weinig', `handschoenen` = '3', `documenten` = 'ja' WHERE (`doosid` = '1');
+
+
+    $query="UPDATE db_ehbo.dozen set ";
+    foreach ($columnNames as $columnName)
+    {
+        if($_POST[$columnName])
+        {
+            //echo $columnName." - ".$_POST[$columnName]."<br>";
+            $query.= $columnName." = ".$_POST[$columnName].", ";
+
+        }
+    }
+    //echo $query;
+    $query = substr($query, 0, -2);
+    $query.=" where (lokaal = ".$_SESSION["klas"].")";
 }
 
 // Close connection
 mysqli_close($link);
 ?>
+
+
+    </body>
+
+</form>
+
+</html>
