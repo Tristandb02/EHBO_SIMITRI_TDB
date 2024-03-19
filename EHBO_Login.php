@@ -113,13 +113,13 @@ if(isset($_POST['cmdSend'])) {
     if ($Role == "gebruiker")
     {
         $_SESSION["Rol"] = "gebruiker";
-        header("location: Home_Gebruiker.php");
+        header("location: overzichtKlas.php");
     }
 
     if ($Role == "beheerder")
     {
         $_SESSION["Rol"] = "beheerder";
-        header("location: Home_Beheerder.php");
+        header("location: overzichtklas.php");
     }
 
 }
