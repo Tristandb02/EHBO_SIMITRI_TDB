@@ -5,6 +5,9 @@
     <input type="Text" name="Naam"/>
     <input type="submit" value="Toevoegen" name="cmdVerstuur"/>
 </form>
+<form ethod="post" action="OverzichtDoos.php">
+    <input type="submit" value="Terugkeren" name="cmdTerug"/>
+</form>
 </body>
 
 </html>
@@ -41,6 +44,9 @@ if(isset($_POST['cmdVerstuur'])) {
             if (mysqli_stmt_execute($statement))
             {
                 echo 'kolom toegoevoegd ';
+                //echo '<form action="OverzichtDoos.php">';
+
+
             }
             else{
                 echo 'kolom niet toegevoegd'.mysqli_stmt_error($statement);
