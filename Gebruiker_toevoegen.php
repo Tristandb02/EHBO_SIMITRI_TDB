@@ -60,7 +60,7 @@ if(isset($_POST['cmdSend']))
 
             if (mysqli_stmt_execute($statement))
             {
-                echo 'klant is toegevoegd';
+                echo 'Gebruiker toegevoegd';
             }
             else{
                 echo 'insert niet gelukt'.mysqli_stmt_error($statement);
