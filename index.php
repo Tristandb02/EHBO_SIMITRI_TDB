@@ -35,11 +35,17 @@
 
     </form>
 </div>
+<input type="submit" value="Wachtwoord aanpassen" name="btnWW">
 </body>
 </html>
 
 <?php
 session_start();
+if(isset($_POST['btnWW']))
+{
+    header("Location: Wachtwoord_Aanpassen.php");
+}
+
 
 if(isset($_POST['cmdSend'])) {
 //verbinding maken met de database
