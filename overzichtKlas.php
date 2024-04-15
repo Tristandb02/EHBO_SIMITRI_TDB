@@ -10,7 +10,6 @@
 
 <?php
 session_start();
-echo $_SESSION["Rol"]
 
 ?>
 
@@ -37,8 +36,9 @@ echo $_SESSION["Rol"]
         header("location: OverzichtDoos.php");
     }
     echo "<br><br><br><input type='submit' value='Terug naar home pagina' name='btnGaHomePag'>";
-    if(isset($_POST["btnGoHomePag"]))
+    if(isset($_POST["btnGaHomePag"]))
     {
+
         if($_SESSION["Rol"] == "beheerder")
         {
             header("location: Home_Beheerder.php");
@@ -53,3 +53,7 @@ echo $_SESSION["Rol"]
 </body>
 </form>
 </html>
+
+
+<?php
+

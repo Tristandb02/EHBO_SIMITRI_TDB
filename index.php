@@ -49,7 +49,7 @@ if(isset($_POST['cmdSend'])) {
     if ($link) {
         //opbouwen van de query
         //query met een parameter
-        $query = 'select wachtwoord, rol from db_ehbo.gebruikers where mail=?';
+        $query = 'select * from db_ehbo.gebruikers where mail=?';
         echo $query . '<br>';
 
         //tatement initialiseren op basis van de query
@@ -68,9 +68,12 @@ if(isset($_POST['cmdSend'])) {
             {
                 $Result = mysqli_stmt_get_result($statement);
 
+
                 $row = mysqli_fetch_assoc($Result);
                 if ($row != null)
                 {
+                    $_SESSION["id"]=$row["gebruikerid"];
+                    $_SESSION["naam"]=$row["voornaam"]." ".$row["achternaam"];
 
 
                     if (password_verify($_POST['password'], $row['wachtwoord'])){
@@ -113,13 +116,13 @@ if(isset($_POST['cmdSend'])) {
     if ($Role == "gebruiker")
     {
         $_SESSION["Rol"] = "gebruiker";
-        header("location: overzichtKlas.php");
+        header("location: Home_Gebruiker.php");
     }
 
     if ($Role == "beheerder")
     {
         $_SESSION["Rol"] = "beheerder";
-        header("location: overzichtklas.php");
+        header("location: Home_Beheerder.php");
     }
 
 }

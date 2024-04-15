@@ -100,14 +100,22 @@ if(isset($_POST["btnAanpassen"]))
 {
     //UPDATE `db_ehbo`.`dozen` SET `schaar` = 'ja', `ontsmettingsmiddel` = 'weinig', `handschoenen` = '3', `documenten` = 'ja' WHERE (`doosid` = '1');
 
-
+    $aangepast="";
     $query="UPDATE db_ehbo.dozen set ";
     foreach ($columnNames as $columnName)
     {
         if($_POST[$columnName])
         {
-            //echo $columnName." - ".$_POST[$columnName]."<br>";
+
             $query.= $columnName." = '".$_POST[$columnName]."', ";
+            if($aangepast=="")
+            {
+                $aangepast.=$columnName;
+            }else{
+                $aangepast.=", ".$columnName;
+            }
+
+
 
         }
     }
@@ -128,6 +136,12 @@ if(isset($_POST["btnAanpassen"]))
         if(mysqli_stmt_execute($stmt))
         {
             echo "gelukt";
+
+            if(mysqli_stmt_prepare($stmt,""))
+
+
+
+
             header("location: OverzichtDoos.php");
         }
         else
