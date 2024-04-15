@@ -40,7 +40,8 @@ if(isset($_POST['cmdSend']))
     {
         //3: opbouw van de query
         //query met een parameters
-        $query = 'INSERT INTO `db_ehbo`.`gebruikers` (`voornaam`, `achternaam`, `mail`, `rol`) VALUES (?, ?, ?, ?)';
+        $query = 'INSERT INTO `db_ehbo`.`gebruikers` (`voornaam`, `achternaam`, `wachtwoord`, `mail`, `rol`) VALUES (?, ?, ?, ?, ?);
+';
         //echo $query.'<br>';
 
         //4a: statement initialiseren op basis van de link
@@ -50,9 +51,10 @@ if(isset($_POST['cmdSend']))
         if (mysqli_stmt_prepare($statement,$query))
         {
             //4c: parameter een waarde geven (= vraagteken vervangen)
-            mysqli_stmt_bind_param($statement,'ssss', $Voornaam, $Achternaam, $Mail, $Rol);
+            mysqli_stmt_bind_param($statement,'sssss', $Voornaam, $Achternaam, $Wachtwoord, $Mail, $Rol);
             $Voornaam = $_POST['Voornaam'];
             $Achternaam = $_POST['Achternaam'];
+            $Wachtwoord = '$2y$10$ehg5VycMFuYke26PAU2PGOQ55mxWndtzgr06ixrnk7TKiLFq6RTQa';
             $Mail = $_POST['Mail'];
             $Rol = $_POST['Rol'];
 
