@@ -4,6 +4,7 @@
     <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
     <input type="submit" value="Afmelden" name="btnAfmelden">
     <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
+    <input type="submit" value="Ga naar logboek" name="GoLogboek">
 </form>
 </html>
 <?php
@@ -20,5 +21,9 @@ if(isset($_POST["btnAfmelden"]))
 if(isset($_POST["btnWW"]))
 {
     header("location: Wachtwoord_Aanpassen.php");
+}
+if(isset($_POST["GoLogboek"]))
+{
+    header("Location: logboek.php");
 }
 ?>
