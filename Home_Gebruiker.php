@@ -3,6 +3,7 @@
     <h1>Welkom gebruiker</h1>
     <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
     <input type="submit" value="Afmelden" name="btnAfmelden">
+    <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
 </form>
 </html>
 <?php
@@ -15,5 +16,9 @@ if(isset($_POST["btnAfmelden"]))
 {
     session_abort();
     header("Location: index.php");
+}
+if(isset($_POST["btnWW"]))
+{
+    header("location: Wachtwoord_Aanpassen.php");
 }
 ?>
