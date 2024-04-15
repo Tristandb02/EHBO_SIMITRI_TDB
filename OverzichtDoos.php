@@ -74,7 +74,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         }
         echo "</table>";
 
-        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'>";
+        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'";
 
 
 
@@ -107,15 +107,43 @@ if(isset($_POST["btnAanpassen"]))
         if($_POST[$columnName])
         {
             //echo $columnName." - ".$_POST[$columnName]."<br>";
-            $query.= $columnName." = ".$_POST[$columnName].", ";
+            $query.= $columnName." = '".$_POST[$columnName]."', ";
 
         }
     }
     //echo $query;
     $query = substr($query, 0, -2);
-    $query.=" where (lokaal = ".$_SESSION["klas"].")";
-}
 
+
+    if (mysqli_stmt_prepare($stmt, "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?")) {
+        mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        $id=mysqli_fetch_row($res);
+    }
+
+    $query.=" where (doosid = '".$id[0]."')";
+    if(mysqli_stmt_prepare($stmt,$query))
+    {
+        if(mysqli_stmt_execute($stmt))
+        {
+            echo "gelukt";
+            header("location: OverzichtDoos.php");
+        }
+        else
+        {
+            echo "niet gelukt";
+        }
+    }
+}
+if(isset($_POST["btnPagToev"]))
+{
+    header("Location: items_toevoegen.php");
+}
+if(isset($_POST["btnNaarKlassen"]))
+{
+    header("location: overzichtKlas.php");
+}
 // Close connection
 mysqli_close($link);
 ?>

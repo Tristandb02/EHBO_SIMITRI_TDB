@@ -10,6 +10,7 @@
 
 <?php
 session_start();
+echo $_SESSION["Rol"]
 
 ?>
 
@@ -28,11 +29,23 @@ session_start();
         echo "</tr>";
     }
 
+
     if(isset($_POST["klaslink"]))
     {
         $_SESSION["klas"]=$_POST["klaslink"];
 
         header("location: OverzichtDoos.php");
+    }
+    echo "<br><br><br><input type='submit' value='Terug naar home pagina' name='btnGaHomePag'>";
+    if(isset($_POST["btnGoHomePag"]))
+    {
+        if($_SESSION["Rol"] == "beheerder")
+        {
+            header("location: Home_Beheerder.php");
+        }elseif($_SESSION["Rol"] == "gebruiker");
+        {
+            header("location: Home_Gebruiker.php");
+        }
     }
     ?>
 </table>

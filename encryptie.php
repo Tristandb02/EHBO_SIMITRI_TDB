@@ -1,7 +1,7 @@
 //Encryptie van het wachtwoord voor in de database
 
 <?php
-$Paswoord = "test2";
+$Paswoord = "test123";
 
 $WWhash = password_hash($Paswoord, PASSWORD_DEFAULT);
 
