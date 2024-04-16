@@ -42,10 +42,13 @@ session_start();
         if($_SESSION["Rol"] == "beheerder")
         {
             header("location: Home_Beheerder.php");
-        }elseif($_SESSION["Rol"] == "gebruiker");
+        }else if($_SESSION["Rol"] == "gebruiker");
         {
             header("location: Home_Gebruiker.php");
         }
+
+
+
     }
     ?>
 </table>
