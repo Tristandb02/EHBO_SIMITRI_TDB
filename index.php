@@ -45,6 +45,7 @@ session_start();
 if(isset($_POST['cmdSend'])) {
 //verbinding maken met de database
     include('Verbinding.php');
+    $BasisWachtwoord = "Test123";
 
 //als de berbinding gelukt is
     if ($link) {
@@ -81,6 +82,11 @@ if(isset($_POST['cmdSend'])) {
 
                         $Role = $row['rol'];
                         echo $Role;
+                        if (password_verify($BasisWachtwoord, $row['wachtwoord']))
+                        {
+                            header("location: Wachtwoord_Aanpassen.php");
+                        }
+
                         echo "inlog geslaagd"."<br>";
 
 
@@ -113,17 +119,18 @@ if(isset($_POST['cmdSend'])) {
     } else {
         echo '<br>verbinding niet gelukt' . mysqli_connect_error();
     }
+    if (!password_verify($BasisWachtwoord, $row['wachtwoord'])) {
+        header("location: Wachtwoord_Aanpassen.php");
 
-    if ($Role == "gebruiker")
-    {
-        $_SESSION["Rol"] = "gebruiker";
-        header("location: Home_Gebruiker.php");
-    }
+        if ($Role == "gebruiker") {
+            $_SESSION["Rol"] = "gebruiker";
+            header("location: Home_Gebruiker.php");
+        }
 
-    if ($Role == "beheerder")
-    {
-        $_SESSION["Rol"] = "beheerder";
-        header("location: Home_Beheerder.php");
+        if ($Role == "beheerder") {
+            $_SESSION["Rol"] = "beheerder";
+            header("location: Home_Beheerder.php");
+        }
     }
 
 }
