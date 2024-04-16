@@ -61,7 +61,7 @@ if(isset($_POST['cmdSend']))
             mysqli_stmt_bind_param($statement,'sssss', $Voornaam, $Achternaam, $Wachtwoord, $Mail, $Rol);
             $Voornaam = $_POST['Voornaam'];
             $Achternaam = $_POST['Achternaam'];
-            $Wachtwoord = '$2y$10$ehg5VycMFuYke26PAU2PGOQ55mxWndtzgr06ixrnk7TKiLFq6RTQa';
+            $Wachtwoord = '$2y$10$ehg5VycMFuYke26PAU2PGOQ55mxWndtzgr06ixrnk7TKiLFq6RTQa';//Basiswachtwoord is Test123 en dit is de gehashde versie
             $Mail = $_POST['Mail'];
             $Rol = $_POST['Rol'];
 
