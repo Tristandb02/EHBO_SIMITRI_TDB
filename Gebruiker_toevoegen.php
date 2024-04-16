@@ -1,4 +1,5 @@
 <html>
+<body>
 <form method="post">
 
         <h1>Gebruiker toevoegen</h1>
