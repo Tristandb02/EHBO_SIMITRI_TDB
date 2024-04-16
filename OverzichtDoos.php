@@ -136,8 +136,22 @@ if(isset($_POST["btnAanpassen"]))
         if(mysqli_stmt_execute($stmt))
         {
             echo "gelukt";
+//INSERT INTO `db_ehbo`.`logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES ('1', 'datum', 'K123', '2');
+            if(mysqli_stmt_prepare($stmt,"INSERT INTO `db_ehbo`.`logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES (?, ?, ?, ?);"))
+            {
+                $date = date("Y-m-d");
+                $status= "Inhoud doos aangepast (".$aangepast.")";
 
-            if(mysqli_stmt_prepare($stmt,""))
+                mysqli_stmt_bind_param($stmt, 'isss',$_SESSION["id"],$date,$_SESSION["klas"],$status);
+                 if(mysqli_stmt_execute($stmt))
+                 {
+                     echo "logboek toegevoegd";
+                 }
+                 else
+                 {
+                     echo "logboek niet toegevoegd";
+                 }
+            }
 
 
 
