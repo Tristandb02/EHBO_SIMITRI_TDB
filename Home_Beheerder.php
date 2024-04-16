@@ -15,5 +15,9 @@ if(isset($_POST["btnWW"]))
 {
     header("location: Wachtwoord_Aanpassen.php");
 }
+if(isset($_POST["btnGaKlassen"]))
+{
+    header("location: overzichtKlas.php");
+}
 
 ?>
