@@ -24,7 +24,7 @@ if(isset($_POST["btnTerug"]))
     {
         //3: opbouw van de query
         //query met een parameters
-        $query = 'select voornaam, achternaam, mail, rol from db_ehbo.gebruikers; order by customername ASC';
+        $query = 'select voornaam, achternaam, mail, rol from db_ehbo.gebruikers order by achternaam ASC';
 
 
         //4a: statement initialiseren op basis van de link
@@ -40,14 +40,14 @@ if(isset($_POST["btnTerug"]))
             //5b: resultaat ophalen
             $resultaat = mysqli_stmt_get_result($statement);
             //5c: record uit het resultaat halen
-            echo '<table border=1 bordercolor=#4299f5>';
-            echo '<tr><th>naam</th><th>tel</th></tr>';
+            echo '<table border=1>'; // bordercolor=#4299f5
+            echo '<tr><th>Achternaam</th><th>Voornaam</th><th>Mail</th><th>Rol</th></tr>';
             while ($row = mysqli_fetch_assoc($resultaat) )
             {
                 //5d: toon rij per rij
                 echo '<tr>';
-                echo "<td> {$row['voornaam']}</td>";
-                echo "<td> {$row['achternaam']} </td>";
+                echo "<td> {$row['achternaam']}</td>";
+                echo "<td> {$row['voornaam']} </td>";
                 echo "<td> {$row['mail']} </td>";
                 echo "<td> {$row['rol']} </td>";
                 echo '</tr>';
