@@ -4,24 +4,24 @@
         <h1>Gebruiker toevoegen</h1>
 
         <label for="Voornaam"></label>
-        <input type="text" name="Voornaam" placeholder="Voornaam" id="Voornaam" required><!-- input textbox voor de email -->
+        <input type="text" name="Voornaam" placeholder="Voornaam" id="Voornaam" ><!-- input textbox voor de email -->
 
         <label for="Achternaam"></label>
-        <input type="text" name="Achternaam" placeholder="Achternaam" id="Achternaam" required><!-- input textbox voor het wachtwoord -->
+        <input type="text" name="Achternaam" placeholder="Achternaam" id="Achternaam" ><!-- input textbox voor het wachtwoord -->
 
         <label for="Mail"></label>
-        <input type="text" name="Mail" placeholder="Mail" id="Mail" required><!-- input textbox voor het wachtwoord -->
+        <input type="text" name="Mail" placeholder="Mail" id="Mail" ><!-- input textbox voor het wachtwoord -->
 
         <label for="Rol"></label>
-        <select name="Rol" required><!-- input textbox voor het wachtwoord -->
+        <select name="Rol" ><!-- input textbox voor het wachtwoord -->
             <option value="gebruiker">gebruiker</option>
             <option value="beheerder">beheerder</option>
         </select>
 
         <input type="submit" value="Toevoegen" Name="cmdSend">
 
-
-
+    <input type="submit" value="Terugkeren" name="btnTerug">
+    <p>Het standaard wachtwoord is test</p>
 
 </form>
 </body>
@@ -29,6 +29,12 @@
 
 
 <?php
+
+if(isset($_POST["btnTerug"]))
+{
+    session_abort();
+    header("Location: Home_Beheerder.php");
+}
 
 if(isset($_POST['cmdSend']))
 {
