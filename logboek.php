@@ -1,5 +1,11 @@
-<?php
+<html>
+<form method="post">
+    <input type="submit" name="Terug naar home" value="btnGoHome">
 
+</form>
+</html>
+<?php
+session_start();
 include "Verbinding.php";
 
 
@@ -24,5 +30,19 @@ if (mysqli_num_rows($result) > 0) {
     echo "leeg logboek";
 }
 mysqli_close($link);
+if(isset($_POST["btnGoHome"]))
+{
+    if ($_SESSION["Rol"] == "gebruiker")
+    {
+        $_SESSION["Rol"] = "gebruiker";
+        header("location: Home_Gebruiker.php");
+    }
+
+    if ($_SESSION["Rol"] == "beheerder")
+    {
+        $_SESSION["Rol"] = "beheerder";
+        header("location: Home_Beheerder.php");
+    }
+}
 
 
