@@ -2,9 +2,9 @@
 <form method="post">
     <h1>Welkom gebruiker</h1>
     <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
-    <input type="submit" value="Afmelden" name="btnAfmelden">
     <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
     <input type="submit" value="Ga naar logboek" name="GoLogboek">
+    <input type="submit" value="Afmelden" name="btnAfmelden">
 </form>
 </html>
 <?php
