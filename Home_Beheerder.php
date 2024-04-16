@@ -4,6 +4,7 @@
 <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
 <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
 <input type="submit" value="Gebruiker aanmaken" name="btnAccount">
+    <input type="submit" value="Afmelden" name="btnAfmelden">
 </form>
 </html>
 <?php
@@ -18,6 +19,11 @@ if(isset($_POST["btnWW"]))
 if(isset($_POST["btnGaKlassen"]))
 {
     header("location: overzichtKlas.php");
+}
+if(isset($_POST["btnAfmelden"]))
+{
+    session_abort();
+    header("Location: index.php");
 }
 
 ?>
