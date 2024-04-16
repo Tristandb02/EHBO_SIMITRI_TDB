@@ -45,10 +45,10 @@ $result = mysqli_query($link, $query);
 
 if (mysqli_num_rows($result) > 0) {
     // Output data of each row
-    echo "<table border='1'><tr><th>Log ID</th><th>ID Leerkracht</th><th>Datum</th><th>Lokaal</th><th>Status</th></tr>";
+    echo "<table border='1'><tr><th>Log ID</th><th>Leerkracht</th><th>Datum</th><th>Lokaal</th><th>Status</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         $idLL=$row["idLeerkracht"];
-        echo "<tr><td>" . $row["logid"] . "</td><td>" . $namenLL[] . "</td><td>" . $row["datum"] . "</td><td>" . $row["lokaal"] . "</td><td>" . $row["status"] . "</td></tr>";
+        echo "<tr><td>" . $row["logid"] . "</td><td>" . $namenLL[$row["idLeerkracht"]] . "</td><td>" . $row["datum"] . "</td><td>" . $row["lokaal"] . "</td><td>" . $row["status"] . "</td></tr>";
     }
     echo "</table>";
 } else {
