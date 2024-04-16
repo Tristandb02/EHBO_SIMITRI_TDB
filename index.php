@@ -84,6 +84,7 @@ if(isset($_POST['cmdSend'])) {
                         echo $Role;
                         if (password_verify($BasisWachtwoord, $row['wachtwoord']))
                         {
+                            $_SESSION["Mail"] = $row["username"];
                             header("location: Wachtwoord_Aanpassen.php");
                         }
 
