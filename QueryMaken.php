@@ -7,7 +7,7 @@ for($i=1; $i<=3; $i++) {
             $klas .= "0";
         }
         $klas .= $i2;
-        echo "INSERT INTO `db_ehbo`.`dozen` (`lokaal`, `pleisters`, `schaar`, `ontsmettingsmiddel`, `handschoenen`, `documenten`) VALUES ("."'$klas' ".", 'ja', 'ja', 'ja', '1', 'ja');<br>";
+        echo "INSERT INTO `db_ehbo`.`dozen` (`lokaal`, `pleisters`, `schaar`, `ontsmettingsmiddel`, `handschoenen`, `documenten`) VALUES ("."'$klas' ".", 'Niet aanwezig, 'Aanwezig', 'Aanwezig', '1', 'Aanwezig');<br>";
     }
     echo "</tr>";
 }
