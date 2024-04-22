@@ -45,31 +45,69 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         mysqli_stmt_execute($stmt);
         $data_res = mysqli_stmt_get_result($stmt);
 
+        /*
+         * while ($data_row = mysqli_fetch_row($data_res)) {
+    // Check if the row contains any non-empty values
+    if (array_filter($data_row)) {
+        echo "<tr>";
+        foreach ($data_row as $key => $value) {
+            if ($key >= 2) { // Skipping the first two columns
+                echo "<td>" . $value . "</td>";
+            }
+        }
+        echo "</tr><tr>";
+        foreach ($columnNames as $columnName) {
+            // Here you can access each column name and perform actions as needed
+            if(!$row["$columnName"] = "") {
+                switch ($columnName) {
+                    case "schaar":
+                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                        break;
+                    case "ontsmettingsmiddel":
+                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                        break;
+                    case "handschoenen":
+                        echo "<td>Aantal:<input type='number' style='width: 40px' name='" . $columnName . "'></td>";
+                        break;
+                    default:
+                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
+                        break;
+                }
+            }
+        }
+    }
+}
+         *
+         */
+
         while ($data_row = mysqli_fetch_row($data_res)) {
             echo "<tr>";
             foreach ($data_row as $key => $value) {
                 if ($key >= 2) { // Skipping the first two columns
-                    echo "<td>".$value."</td>";
+
+                        echo "<td>" . $value . "</td>";
+
                 }
             }
             echo "</tr><tr>";
             foreach ($columnNames as $columnName) {
                 // Here you can access each column name and perform actions as needed
-                switch ($columnName) {
-                    case "schaar":
-                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>";
-                        break;
-                    case "ontsmettingsmiddel":
-                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>";
-                        break;
-                    case "handschoenen":
-                        echo "<td>Aantal:<input type='number' style='width: 40px' name='".$columnName."'></td>";
-                        break;
-                    default:
-                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
-                        break;
+                if(!$row["$columnName"] = "") {
+                    switch ($columnName) {
+                        case "schaar":
+                            echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                            break;
+                        case "ontsmettingsmiddel":
+                            echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                            break;
+                        case "handschoenen":
+                            echo "<td>Aantal:<input type='number' style='width: 40px' name='" . $columnName . "'></td>";
+                            break;
+                        default:
+                            echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
+                            break;
+                    }
                 }
-
             }
         }
         echo "</table>";
