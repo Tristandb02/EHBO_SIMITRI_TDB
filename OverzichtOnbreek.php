@@ -26,12 +26,31 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
     }
 }
-echo "<input type='submit' name='btnZoek' value='Laat zien'>";
+echo "<input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
 
 
 
+$LokalenOntbreek="";
+$intLokalenOntbreek=0;
 
 if(isset($_POST["Item"]))
 {
-    if(mysqli_stmt_prepare($stmt,"select lokaal where ".$_POST["Item"]." = 'Niet Aanwezig'"));
+    if(mysqli_stmt_prepare($stmt,"select lokaal from db_ehbo.dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
+    {
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        while ($row=mysqli_fetch_assoc($res))
+        {
+            $intLokalenOntbreek++;
+            $LokalenOntbreek.=$row["lokaal"].", ";
+
+        }
+
+        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+        echo "Er ontbreken ".$intLokalenOntbreek." Scharen in de volgende lokalen: ".$LokalenOntbreek;
+    }
+}
+if(isset($_POST["btnTerug"]))
+{
+    header("Location: Home_Beheerder.php");
 }

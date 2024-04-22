@@ -6,6 +6,7 @@
 <input type="submit" value="Gebruiker aanmaken" name="btnAccount">
     <input type="submit" value="Ga naar logboek" name="GoLogboek">
 <input type="submit" value="Lijst gebruiker" name="btnLijst">
+    <input type="submit" value="Wat ontbreekt er allemaal?" name="btnPagontbreek">
 </form>
 </html>
 <?php
@@ -29,5 +30,8 @@ if(isset($_POST["GoLogboek"]))
 {
     header("Location: logboek.php");
 }
-
+if(isset($_POST["btnPagontbreek"]))
+{
+    header("location: OverzichtOnbreek.php");
+}
 ?>
