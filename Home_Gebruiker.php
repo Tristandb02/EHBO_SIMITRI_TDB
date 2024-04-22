@@ -3,7 +3,6 @@
     <h1>Welkom gebruiker</h1>
     <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
     <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
-    <input type="submit" value="Ga naar logboek" name="GoLogboek">
     <input type="submit" value="Afmelden" name="btnAfmelden">
 </form>
 </html>
@@ -22,8 +21,5 @@ if(isset($_POST["btnWW"]))
 {
     header("location: Wachtwoord_Aanpassen.php");
 }
-if(isset($_POST["GoLogboek"]))
-{
-    header("Location: logboek.php");
-}
+
 ?>

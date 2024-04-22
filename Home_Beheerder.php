@@ -4,6 +4,7 @@
 <input type="submit" value="Ga naar klassen overzicht" name="btnGaKlassen">
 <input type="submit" value="Wachtwoord aanpassen" name="btnWW">
 <input type="submit" value="Gebruiker aanmaken" name="btnAccount">
+    <input type="submit" value="Ga naar logboek" name="GoLogboek">
 <input type="submit" value="Lijst gebruiker" name="btnLijst">
 </form>
 </html>
@@ -23,6 +24,10 @@ if(isset($_POST["btnGaKlassen"]))
 if(isset($_POST["btnLijst"]))
 {
     header("location: Gebruikers.php");
+}
+if(isset($_POST["GoLogboek"]))
+{
+    header("Location: logboek.php");
 }
 
 ?>
