@@ -86,15 +86,13 @@ if(isset($_POST['cmdSend'])) {
 
                 if ($row != null)
                 {
-                    $_SESSION["id"]=$row["gebruikerid"];
 
-                    $_SESSION["naam"]=$row["voornaam"]." ".$row["achternaam"];
 
-                    if ($row["OudWW"] != $row["NieuwWW"])
+                    if ($_POST["OudWW"] != $_POST["NieuwWW"])
                     {
-                        if ($row["NieuwWW"] != $row["HerhaalWW"])
+                        if ($_POST["NieuwWW"] == $_POST["HerhaalWW"])
                         {
-                            echo "nieuw != herhaal";
+                            $WWhash = password_hash($_POST["NieuwWW"], PASSWORD_DEFAULT);
                             $query1 = 'update gebruikers set wachtwoord = ? where mail = ?';
 
                             $statement1 = mysqli_stmt_init($link);
@@ -102,15 +100,12 @@ if(isset($_POST['cmdSend'])) {
                             if (mysqli_stmt_prepare($statement1, $query1))
                             {
                                 mysqli_stmt_bind_param($statement1, 'ss', $WachtwoordParam, $MailParam);
-                                $WachtwoordParam = $row["NieuwWW"];
+                                $WachtwoordParam = $WWhash;
                                 $MailParam = $mail;
-                                echo "param 2";
+
                             }
                             mysqli_stmt_execute($statement1);
-                            if(mysqli_stmt_execute($statement1))
-                            {
-                                echo "update geslaagd";
-                            }
+
                             header("location: index.php");
 
                         } else

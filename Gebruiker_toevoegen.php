@@ -22,7 +22,7 @@
         <input type="submit" value="Toevoegen" Name="cmdSend">
 
     <input type="submit" value="Terugkeren" name="btnTerug">
-    <p>Het standaard wachtwoord is test</p>
+    <p>Het standaard wachtwoord is Test123</p>
 
 </form>
 </body>
@@ -45,6 +45,7 @@ if(isset($_POST['cmdSend']))
 //2: als de verbinding gelukt is
     if($link)
     {
+        $BasisWW = "Test123";
         //3: opbouw van de query
         //query met een parameters
         $query = 'INSERT INTO `db_ehbo`.`gebruikers` (`voornaam`, `achternaam`, `wachtwoord`, `mail`, `rol`) VALUES (?, ?, ?, ?, ?);
@@ -61,7 +62,7 @@ if(isset($_POST['cmdSend']))
             mysqli_stmt_bind_param($statement,'sssss', $Voornaam, $Achternaam, $Wachtwoord, $Mail, $Rol);
             $Voornaam = $_POST['Voornaam'];
             $Achternaam = $_POST['Achternaam'];
-            $Wachtwoord = '$2y$10$ehg5VycMFuYke26PAU2PGOQ55mxWndtzgr06ixrnk7TKiLFq6RTQa';
+            $Wachtwoord = password_hash($BasisWW, PASSWORD_DEFAULT);
             $Mail = $_POST['Mail'];
             $Rol = $_POST['Rol'];
 

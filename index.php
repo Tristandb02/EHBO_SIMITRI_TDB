@@ -84,7 +84,7 @@ if(isset($_POST['cmdSend'])) {
                         echo $Role;
                         if (password_verify($BasisWachtwoord, $row['wachtwoord']))
                         {
-                            $_SESSION["Mail"] = $row["username"];
+                            $_SESSION["Mail"] = $_POST["username"];
                             header("location: Wachtwoord_Aanpassen.php");
                         }
 
@@ -121,7 +121,6 @@ if(isset($_POST['cmdSend'])) {
         echo '<br>verbinding niet gelukt' . mysqli_connect_error();
     }
     if (!password_verify($BasisWachtwoord, $row['wachtwoord'])) {
-        header("location: Wachtwoord_Aanpassen.php");
 
         if ($Role == "gebruiker") {
             $_SESSION["Rol"] = "gebruiker";
