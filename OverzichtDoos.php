@@ -57,16 +57,16 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                 // Here you can access each column name and perform actions as needed
                 switch ($columnName) {
                     case "schaar":
-                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='ja' type='radio' name='".$columnName."'>Aanwezig</td>";
+                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>";
                         break;
                     case "ontsmettingsmiddel":
-                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='ja' type='radio' name='".$columnName."'>Aanwezig</td>";
+                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>";
                         break;
                     case "handschoenen":
                         echo "<td>Aantal:<input type='number' style='width: 40px' name='".$columnName."'></td>";
                         break;
                     default:
-                        echo "<td><input value='nee' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='ja' type='radio' name='".$columnName."'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
+                        echo "<td><input value='Niet aanwezig' type='radio' name='".$columnName."'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='".$columnName."'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
                         break;
                 }
 
