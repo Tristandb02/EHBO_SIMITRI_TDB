@@ -26,6 +26,8 @@ if (mysqli_stmt_prepare($stmt, $data_query)) {
     $legeKolom = array();
 
     while ($data_row = mysqli_fetch_assoc($data_res)) {
+        $_SESSION["DoosID"]=$data_row["doosid"];
+        echo $_SESSION["DoosID"];
         foreach ($fields as $field) {
             if (is_null($data_row[$field->name])) {
                 $legeKolom[] = $field->name;
@@ -57,14 +59,13 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     // Fetch column names and display them as table headers
     while ($row = mysqli_fetch_assoc($res)) {
 
-        for($i=0;$i<sizeof($legeKolom);$i++)
-        {
-            if($row['COLUMN_NAME']!=$legeKolom[$i])
+
+            if(!in_array($row['COLUMN_NAME'], $legeKolom))
             {
                 echo "<th>" . $row['COLUMN_NAME'] . "</th>";
                 $columnNames[] = $row['COLUMN_NAME']; // Append column name to the array
             }
-        }
+
 
 
 
@@ -84,7 +85,9 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         echo "<tr>";
         foreach ($data_row as $key => $value) {
             if ($key >= 2) { // Skipping the first two columns
-                echo "<td>" . $value . "</td>";
+
+                    echo "<td>" . $value . "</td>";
+
             }
         }
         echo "</tr><tr>";
