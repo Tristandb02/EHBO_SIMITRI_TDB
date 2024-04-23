@@ -1,7 +1,7 @@
-<html>
 <!--
 Author: Milan Van Wonterghem
 -->
+<html>
 <form method="post">
     <input type="submit" name="btnGoHome" value="ga naar home">
 
