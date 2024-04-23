@@ -15,7 +15,28 @@ include "Verbinding.php";
 session_start();
 echo "<h1>EHBO-doos van lokaal " . $_SESSION["klas"] . "</h1>";
 
-$Querry = "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?";
+$stmt = mysqli_stmt_init($link);
+$data_query = "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?";
+if (mysqli_stmt_prepare($stmt, $data_query)) {
+    mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
+    mysqli_stmt_execute($stmt);
+    $data_res = mysqli_stmt_get_result($stmt);
+
+    $fields = $data_res->fetch_fields();
+    $legeKolom = array();
+
+    while ($data_row = mysqli_fetch_assoc($data_res)) {
+        foreach ($fields as $field) {
+            if (is_null($data_row[$field->name])) {
+                $legeKolom[] = $field->name;
+            }
+        }
+    }
+
+}
+
+
+
 
 // Query to get column names from the table
 $query = "SELECT COLUMN_NAME 
@@ -24,7 +45,7 @@ $query = "SELECT COLUMN_NAME
           AND TABLE_NAME = 'dozen'
           LIMIT 2, 999"; // Skipping the first two columns
 
-$stmt = mysqli_stmt_init($link);
+
 $columnNames = array(); // Initialize an array to store column names
 
 if (mysqli_stmt_prepare($stmt, $query)) {
@@ -35,8 +56,18 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "<tr>";
     // Fetch column names and display them as table headers
     while ($row = mysqli_fetch_assoc($res)) {
-        echo "<th>" . $row['COLUMN_NAME'] . "</th>";
-        $columnNames[] = $row['COLUMN_NAME']; // Append column name to the array
+
+        for($i=0;$i<sizeof($legeKolom);$i++)
+        {
+            if($row['COLUMN_NAME']!=$legeKolom[$i])
+            {
+                echo "<th>" . $row['COLUMN_NAME'] . "</th>";
+                $columnNames[] = $row['COLUMN_NAME']; // Append column name to the array
+            }
+        }
+
+
+
     }
     echo "</tr>";
 
