@@ -1,6 +1,10 @@
-//Encryptie van het wachtwoord voor in de database
-
+<!--
+Author: Tristan De Ben
+-->
 <?php
+
+
+
 $Paswoord = "Test123";
 
 $WWhash = password_hash($Paswoord, PASSWORD_DEFAULT);

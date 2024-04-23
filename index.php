@@ -1,3 +1,6 @@
+<!--
+Authors: Tristan De Ben, Milan Van Wonterghem
+-->
 <html>
 <head>
     <title>Login</title>

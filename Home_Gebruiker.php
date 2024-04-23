@@ -1,3 +1,6 @@
+<!--
+Authors: Tristan De Ben, Milan Van Wonterghem
+-->
 <html>
 <form method="post">
     <h1>Welkom gebruiker</h1>

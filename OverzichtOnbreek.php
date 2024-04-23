@@ -1,6 +1,6 @@
-
-
-
+<!--
+Authors: Simon Marchand, Milan Van Wonterghem
+-->
 <?php
 include 'Verbinding.php';
 $query = "SELECT COLUMN_NAME 

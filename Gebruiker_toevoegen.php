@@ -1,4 +1,8 @@
+<!--
+Authors: Tristan De Ben, Simon Marchand, Milan Van Wonterghem
+-->
 <html>
+
 <body>
 <form method="post">
 
@@ -30,7 +34,6 @@
 
 
 <?php
-
 if(isset($_POST["btnTerug"]))
 {
     session_abort();
