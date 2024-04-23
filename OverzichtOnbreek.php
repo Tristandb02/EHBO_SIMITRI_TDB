@@ -1,5 +1,5 @@
 <!--
-Authors: Simon Marchand, Milan Van Wonterghem
+Authors: Simon Marchand, Milan Van Wonterghem, Tristan De Ben
 -->
 <?php
 include 'Verbinding.php';
@@ -49,7 +49,9 @@ if(isset($_POST["Item"]))
         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
         if ($intLokalenOntbreek != 0)
         {
-            echo "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+            $_SESSION['Ontbrekend'] = $Ontbreek;
+            echo "$Ontbreek";
         }
         else
         {
