@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <!--
 Author: Milan Van Wonterghem
 -->
+<!DOCTYPE html>
+
 <html lang="en">
 <form method="post">
 <head>
