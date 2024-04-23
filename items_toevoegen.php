@@ -31,7 +31,8 @@ if(isset($_POST['cmdVerstuur'])) {
         //query met een parameters
         $Item = $_POST['Naam'];
         $query = 'ALTER TABLE db_ehbo.dozen ADD COLUMN '.$Item.' VARCHAR(255)';
-        echo $query . '<br>';
+        $query = 'update db_ehbo.dozen  set '.$Item.' = Aanwezig';
+
 
         //4a: statement initialiseren op basis van de link
         $statement = mysqli_stmt_init($link);
