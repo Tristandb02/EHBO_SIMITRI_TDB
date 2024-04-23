@@ -27,7 +27,6 @@ if (mysqli_stmt_prepare($stmt, $data_query)) {
 
     while ($data_row = mysqli_fetch_assoc($data_res)) {
         $_SESSION["DoosID"]=$data_row["doosid"];
-        echo $_SESSION["DoosID"];
         foreach ($fields as $field) {
             if (is_null($data_row[$field->name])) {
                 $legeKolom[] = $field->name;
@@ -85,8 +84,10 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         echo "<tr>";
         foreach ($data_row as $key => $value) {
             if ($key >= 2) { // Skipping the first two columns
+                if($value!=null) {
 
                     echo "<td>" . $value . "</td>";
+                }
 
             }
         }

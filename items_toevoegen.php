@@ -18,7 +18,7 @@ Author: Simon Marchand
 
 
 <?php
-
+session_start();
 if(isset($_POST['cmdVerstuur'])) {
 
 
@@ -31,21 +31,13 @@ if(isset($_POST['cmdVerstuur'])) {
         //query met een parameters
         $Item = $_POST['Naam'];
         $query = 'ALTER TABLE db_ehbo.dozen ADD COLUMN '.$Item.' VARCHAR(255)';
-        $query1= 'update db_ehbo.dozen  set '.$Item.' = Aanwezig WHERE (`doosid` = ?)';
+        $query1= 'update db_ehbo.dozen  set '.$Item." = 'Aanwezig' WHERE (`doosid` = ?)";
 
 
         //4a: statement initialiseren op basis van de link
         $statement = mysqli_stmt_init($link);
-
-        //4b: prepared statement maken op basis van de query en het statement
-        if (mysqli_stmt_prepare($statement, $query)) {
-            //4c: parameter een waarde geven (= vraagteken vervangen)
-            mysqli_stmt_bind_param($statement, 'i', $Id);
-            $Item = $_POST['Naam'];
-            $Id = $_SESSION["DoosID"];
-
-
-
+        if (mysqli_stmt_prepare($statement, $query))
+        {
             if (mysqli_stmt_execute($statement))
             {
                 echo 'kolom toegoevoegd ';
@@ -56,6 +48,18 @@ if(isset($_POST['cmdVerstuur'])) {
             else{
                 echo 'kolom niet toegevoegd'.mysqli_stmt_error($statement);
             }
+        }
+
+        //4b: prepared statement maken op basis van de query en het statement
+        if (mysqli_stmt_prepare($statement, $query1)) {
+            //4c: parameter een waarde geven (= vraagteken vervangen)
+            mysqli_stmt_bind_param($statement, 'i', $Id);
+
+            $Id = $_SESSION["DoosID"];
+
+
+
+
 
         }
 
