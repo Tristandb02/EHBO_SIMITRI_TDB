@@ -1,3 +1,6 @@
+<!--
+Authors: Milan Van Wonterghem, Simon Marchand, Tristan De Ben
+-->
 <html>
 <form method="post">
 <h1>Welkom beheerder</h1>

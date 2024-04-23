@@ -1,3 +1,6 @@
+<!--
+Author: Tristan De Ben
+-->
 <html>
 <head>
     <title>Login</title>

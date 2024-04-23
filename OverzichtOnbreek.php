@@ -1,6 +1,6 @@
-
-
-
+<!--
+Authors: Simon Marchand, Milan Van Wonterghem
+-->
 <?php
 include 'Verbinding.php';
 $query = "SELECT COLUMN_NAME 
@@ -47,7 +47,15 @@ if(isset($_POST["Item"]))
         }
 
         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
-        echo "Er ontbreken ".$intLokalenOntbreek." Scharen in de volgende lokalen: ".$LokalenOntbreek;
+        if ($intLokalenOntbreek != 0)
+        {
+            echo "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+        }
+        else
+        {
+            echo "Er ontbreken geen ".$_POST["Item"];
+        }
+        
     }
 }
 if(isset($_POST["btnTerug"]))

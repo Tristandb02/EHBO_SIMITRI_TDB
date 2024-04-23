@@ -1,3 +1,6 @@
+<!--
+Author: Tristan De Ben
+-->
 <?php
 
 //verbinding naar de database

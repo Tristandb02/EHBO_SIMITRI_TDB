@@ -1,3 +1,6 @@
+<!--
+Author: Simon Marchand
+-->
 <html>
 <body>
 <form method="post">
