@@ -10,6 +10,7 @@ Authors: Milan Van Wonterghem, Simon Marchand, Tristan De Ben
     <input type="submit" value="Ga naar logboek" name="GoLogboek">
 <input type="submit" value="Lijst gebruiker" name="btnLijst">
     <input type="submit" value="Wat ontbreekt er allemaal?" name="btnPagontbreek">
+    <input type="submit" value="Afmelden" name="btnAfmelden">
 </form>
 </html>
 <?php
@@ -36,5 +37,10 @@ if(isset($_POST["GoLogboek"]))
 if(isset($_POST["btnPagontbreek"]))
 {
     header("location: OverzichtOnbreek.php");
+}
+if(isset($_POST["btnAfmelden"]))
+{
+    session_abort();
+    header("Location: index.php");
 }
 ?>
