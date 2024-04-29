@@ -71,7 +71,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="Home_Beheerder.php" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -79,28 +79,101 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="price.html" class="nav-item nav-link">Pricing</a>
+                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link active">About</a>
+                        <a href="service.php" class="nav-item nav-link">Service</a>
+                        <a href="price.php" class="nav-item nav-link">Pricing</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="team.html" class="dropdown-item active">The Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.html" class="dropdown-item">Appointment</a>
-                                <a href="search.html" class="dropdown-item">Search</a>
+                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
+                                <a href="team.php" class="dropdown-item">The Team</a>
+                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
+                                <a href="appointment.php" class="dropdown-item">Appointment</a>
+                                <a href="search.php" class="dropdown-item">Search</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
     <!-- Navbar End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="img/about.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">About Us</h5>
+                        <h1 class="display-4">Best Medical Care For Yourself and Your Family</h1>
+                    </div>
+                    <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                    <div class="row g-3 pt-3">
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-user-md text-primary mb-3"></i>
+                                <h6 class="mb-0">Qualified<small class="d-block text-primary">Doctors</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-procedures text-primary mb-3"></i>
+                                <h6 class="mb-0">Emergency<small class="d-block text-primary">Services</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-microscope text-primary mb-3"></i>
+                                <h6 class="mb-0">Accurate<small class="d-block text-primary">Testing</small></h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="bg-light text-center rounded-circle py-4">
+                                <i class="fa fa-3x fa-ambulance text-primary mb-3"></i>
+                                <h6 class="mb-0">Free<small class="d-block text-primary">Ambulance</small></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Search Start -->
+    <div class="container-fluid bg-primary my-5 py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Find A Doctor</h5>
+                <h1 class="display-4 mb-4">Find A Healthcare Professionals</h1>
+                <h5 class="text-white fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos sit sed ipsum takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
+            </div>
+            <div class="mx-auto" style="width: 100%; max-width: 600px;">
+                <div class="input-group">
+                    <select class="form-select border-primary w-25" style="height: 60px;">
+                        <option selected>Department</option>
+                        <option value="1">Department 1</option>
+                        <option value="2">Department 2</option>
+                        <option value="3">Department 3</option>
+                    </select>
+                    <input type="text" class="form-control border-primary w-50" placeholder="Keyword">
+                    <button class="btn btn-dark border-0 w-25">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
 
 
     <!-- Team Start -->

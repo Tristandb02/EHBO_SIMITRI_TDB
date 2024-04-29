@@ -71,7 +71,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="Home_Beheerder.php" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -79,22 +79,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="price.html" class="nav-item nav-link">Pricing</a>
+                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
+                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="service.php" class="nav-item nav-link">Service</a>
+                        <a href="price.php" class="nav-item nav-link">Pricing</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="team.html" class="dropdown-item">The Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.html" class="dropdown-item">Appointment</a>
-                                <a href="search.html" class="dropdown-item">Search</a>
+                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
+                                <a href="team.php" class="dropdown-item">The Team</a>
+                                <a href="testimonial.html" class="dropdown-item active">Testimonial</a>
+                                <a href="appointment.php" class="dropdown-item">Appointment</a>
+                                <a href="search.php" class="dropdown-item">Search</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -103,77 +103,58 @@
     <!-- Navbar End -->
 
 
-    <!-- Contact Start -->
-    <div class="container-fluid pt-5">
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Any Questions?</h5>
-                <h1 class="display-4">Please Feel Free To Contact Us</h1>
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
+                <h1 class="display-4">Patients Say About Our Services</h1>
             </div>
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">123 Street, New York, USA</h6>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">+012 345 6789</h6>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">info@example.com</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12" style="height: 500px;">
-                    <div class="position-relative h-100">
-                        <iframe class="position-relative w-100 h-100"
-                            src="https://www.google.com/maps/place/GTI+Beveren/@51.2189279,4.2497443,16z/data=!3m1!4b1!4m6!3m5!1s0x47c38b2563ba2edb:0x4b4e879cf17d5995!8m2!3d51.2189246!4d4.2523192!16s%2Fg%2F1tlw872h?entry=ttu"
-                            frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                            tabindex="0"></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
+            <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="bg-white rounded p-5 m-5 mb-0">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-1.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
-                        </form>
+                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
+                            <hr class="w-25 mx-auto">
+                            <h3>Patient Name</h3>
+                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-2.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
+                            <hr class="w-25 mx-auto">
+                            <h3>Patient Name</h3>
+                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-3.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
+                            <hr class="w-25 mx-auto">
+                            <h3>Patient Name</h3>
+                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    <!-- Testimonial End -->
 
 
     <!-- Footer Start -->
