@@ -68,10 +68,10 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="Home_Beheerder.php" class="navbar-brand">
+                <a href="index.html" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -79,22 +79,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
-                        <a href="about.php" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link active">Service</a>
-                        <a href="price.php" class="nav-item nav-link">Pricing</a>
+                        <a href="Home_Gebruiker.php" class="nav-item nav-link">Home</a>
+                        <a href="service.php" class="nav-item nav-link active">Klassen     overzicht</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="team.php" class="dropdown-item">The Team</a>
-                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.php" class="dropdown-item">Appointment</a>
-                                <a href="search.php" class="dropdown-item">Search</a>
+                                <a href="blog.php" class="dropdown-item">Wachtwoord aanpassen</a>
+                                <a href="detail.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -104,92 +97,29 @@
     
 
     <!-- Services Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Services</h5>
-                <h1 class="display-4">Excellent Medical Services</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-user-md text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Emergency Care</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-procedures text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Operation & Surgery</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-stethoscope text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Outdoor Checkup</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-ambulance text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Ambulance Service</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-pills text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Medicine & Pharmacy</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-microscope text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Blood Testing</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+       <?php
+            echo "<table style='width: 20%; height: 20%' border='1'>";
+            for($i=1; $i<=3; $i++) {
+                echo "<tr>";
+                for($i2=8; $i2<=23; $i2++) {
+                    $klas = "K$i";
+                    if($i2 < 10) {
+                        $klas .= "0";
+                    }
+                    $klas .= $i2;
+                    echo "<td><input type='submit' name='klaslink' value=$klas></td>";
+                }
+                echo "</tr>";
+            }
+            ?>
+
+
     <!-- Services End -->
 
 
     <!-- Appointment Start -->
+    <!--
     <div class="container-fluid bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="row gx-5">
@@ -253,10 +183,12 @@
             </div>
         </div>
     </div>
+    -->
     <!-- Appointment End -->
 
 
     <!-- Testimonial Start -->
+    <!--
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -307,10 +239,12 @@
             </div>
         </div>
     </div>
+    -->
     <!-- Testimonial End -->
 
 
     <!-- Footer Start -->
+    <!--
     <div class="container-fluid bg-dark text-light mt-5 py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -374,6 +308,7 @@
             </div>
         </div>
     </div>
+    -->
     <!-- Footer End -->
 
 
