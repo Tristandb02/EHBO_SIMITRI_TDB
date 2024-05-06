@@ -89,7 +89,7 @@
                                 <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="price.php" class="dropdown-item">Logboek</a>
                                 <a href="team.php" class="dropdown-item">Lijst gebruiker</a>
-                                <a href="detail.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
