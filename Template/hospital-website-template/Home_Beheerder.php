@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MEDINOVA - Hospital Website Template</title>
+    <title>EHBO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
+    <!-- Topbar Start --><!--
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- Topbar End -->
 
 
@@ -71,8 +71,8 @@
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
+                <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -80,21 +80,21 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.php" class="nav-item nav-link">About</a>
-                        <a href="service.php" class="nav-item nav-link">Service</a>
-                        <a href="price.php" class="nav-item nav-link">Pricing</a>
+                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="team.php" class="dropdown-item">The Team</a>
-                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.php" class="dropdown-item">Appointment</a>
-                                <a href="search.php" class="dropdown-item">Search</a>
+                                <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
+                                <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
+                                <a href="price.php" class="dropdown-item">Logboek</a>
+                                <a href="team.php" class="dropdown-item">Lijst gebruiker</a>
+                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+
+
                     </div>
                 </div>
             </nav>
