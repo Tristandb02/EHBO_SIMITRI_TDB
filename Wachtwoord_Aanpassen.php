@@ -105,7 +105,6 @@ if(isset($_POST['cmdSend'])) {
                                 mysqli_stmt_bind_param($statement1, 'ss', $WachtwoordParam, $MailParam);
                                 $WachtwoordParam = $WWhash;
                                 $MailParam = $mail;
-
                             }
                             mysqli_stmt_execute($statement1);
 

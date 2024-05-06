@@ -1,5 +1,6 @@
 <!--
 Author: Milan Van Wonterghem
+Deze pagina heb ik even snel in elkaar geflanst zodat ge makkelijk u database kunt opvulle
 -->
 <?php
 for($i=1; $i<=3; $i++) {

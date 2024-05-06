@@ -1,5 +1,5 @@
 <!--
-Author: Simon Marchand
+Author: Simon Marchand & Milan Van Wonterghem
 -->
 <html>
 <body>
@@ -56,6 +56,7 @@ if(isset($_POST['cmdVerstuur'])) {
             mysqli_stmt_bind_param($statement, 'i', $Id);
 
             $Id = $_SESSION["DoosID"];
+            mysqli_stmt_execute($statement);
 
 
 

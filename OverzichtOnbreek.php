@@ -35,30 +35,56 @@ $intLokalenOntbreek=0;
 
 if(isset($_POST["Item"]))
 {
-    if(mysqli_stmt_prepare($stmt,"select lokaal from db_ehbo.dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
+    if($_POST["Item"]!="handschoenen")
     {
-        mysqli_stmt_execute($stmt);
-        $res = mysqli_stmt_get_result($stmt);
-        while ($row=mysqli_fetch_assoc($res))
+        if(mysqli_stmt_prepare($stmt,"select lokaal from db_ehbo.dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
         {
-            $intLokalenOntbreek++;
-            $LokalenOntbreek.=$row["lokaal"].", ";
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row=mysqli_fetch_assoc($res))
+            {
+                $intLokalenOntbreek++;
+                $LokalenOntbreek.=$row["lokaal"].", ";
+
+            }
+
+            $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+            if ($intLokalenOntbreek != 0)
+            {
+                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+                $_SESSION['Ontbrekend'] = $Ontbreek;
+                echo "$Ontbreek";
+            }
+            else
+            {
+                echo "Er ontbreken geen ".$_POST["Item"];
+            }
 
         }
 
-        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
-        if ($intLokalenOntbreek != 0)
-        {
-            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
-            $_SESSION['Ontbrekend'] = $Ontbreek;
-            echo "$Ontbreek";
-        }
-        else
-        {
-            echo "Er ontbreken geen ".$_POST["Item"];
-        }
-        
     }
+    else {
+        if (mysqli_stmt_prepare($stmt, "select lokaal from db_ehbo.dozen where " . $_POST["Item"] . " = 1")) {
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row = mysqli_fetch_assoc($res)) {
+                $intLokalenOntbreek++;
+                $LokalenOntbreek .= $row["lokaal"] . ", ";
+
+            }
+
+            $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+            if ($intLokalenOntbreek != 0) {
+                $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                $_SESSION['Ontbrekend'] = $Ontbreek;
+                echo "$Ontbreek";
+            } else {
+                echo "Er ontbreken geen " . $_POST["Item"];
+            }
+
+        }
+    }
+
 }
 if(isset($_POST["btnTerug"]))
 {
