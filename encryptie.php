@@ -5,7 +5,7 @@ Author: Tristan De Ben
 
 
 
-$Paswoord = "Test123";
+$Paswoord = "x";
 
 $WWhash = password_hash($Paswoord, PASSWORD_DEFAULT);
 
