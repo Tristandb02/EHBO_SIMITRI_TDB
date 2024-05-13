@@ -127,12 +127,14 @@ if(isset($_POST['cmdSend'])) {
 
         if ($Role == "gebruiker") {
             $_SESSION["Rol"] = "gebruiker";
-            header("location: Home_Gebruiker.php");
+            header("location: https://www.tristand101006.gti-i2ct.be/ProjectEHBO/Home_Gebruiker.php");
+            echo "berguiker";
         }
 
         if ($Role == "beheerder") {
             $_SESSION["Rol"] = "beheerder";
-            header("location: Home_Beheerder.php");
+            header("location: https://www.tristand101006.gti-i2ct.be/ProjectEHBO/Home_Beheerder.php");
+            echo "hebeerder";
         }
     }
 
