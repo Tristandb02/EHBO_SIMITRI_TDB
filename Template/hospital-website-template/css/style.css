@@ -98,7 +98,9 @@
 
 .hero-header {
     background: url(../img/home.png) top right no-repeat;
-    background-size: cover;
+    background-size: 100%
+    
+
 }
 
 .service-item {
