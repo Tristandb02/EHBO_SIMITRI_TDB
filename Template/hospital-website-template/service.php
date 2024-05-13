@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,21 +99,7 @@
 
     <!-- Services Start -->
 
-       <?php
-            echo "<table style='width: 20%; height: 20%' border='1'>";
-            for($i=1; $i<=3; $i++) {
-                echo "<tr>";
-                for($i2=8; $i2<=23; $i2++) {
-                    $klas = "K$i";
-                    if($i2 < 10) {
-                        $klas .= "0";
-                    }
-                    $klas .= $i2;
-                    echo "<td><input type='submit' name='klaslink' value=$klas></td>";
-                }
-                echo "</tr>";
-            }
-            ?>
+
 
 
     <!-- Services End -->
@@ -331,3 +318,29 @@
 </body>
 
 </html>
+<?php
+echo "<form method='post' action='OverzichtDoos.php'><table style='width: 40%; height: 40%' border='1'>";
+for($i=1; $i<=3; $i++) {
+    echo "<tr>";
+    for($i2=8; $i2<=23; $i2++) {
+        $klas = "K$i";
+        if($i2 < 10) {
+            $klas .= "0";
+        }
+        $klas .= $i2;
+        echo "<td><input type='submit' name='klaslink' value=$klas></td>";
+    }
+    echo "</tr>";
+}
+echo "</form>";
+
+
+if(isset($_POST["klaslink"]))
+{
+    echo "TYOOOOO";
+    $_SESSION["klas"]=$_POST["klaslink"];
+
+    header("location: OverzichtDoos.php");
+}
+
+?>
