@@ -54,7 +54,7 @@ if(isset($_POST['cmdSend'])) {
     if ($link) {
         //opbouwen van de query
         //query met een parameter
-        $query = 'select * from db_ehbo.gebruikers where mail=?';
+        $query = 'select * from EHBO_gebruikers where mail=?';
         echo $query . '<br>';
 
         //tatement initialiseren op basis van de query

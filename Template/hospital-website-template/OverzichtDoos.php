@@ -120,7 +120,7 @@ session_start();
 echo "<h1>EHBO-doos van lokaal " . $_SESSION["klas"] . "</h1>";
 
 $stmt = mysqli_stmt_init($link);
-$data_query = "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?";
+$data_query = "SELECT * FROM EHBO_dozen WHERE lokaal = ?";
 if (mysqli_stmt_prepare($stmt, $data_query)) {
     mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
     mysqli_stmt_execute($stmt);
@@ -146,8 +146,8 @@ if (mysqli_stmt_prepare($stmt, $data_query)) {
 // Query to get column names from the table
 $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
-          WHERE TABLE_SCHEMA = 'db_ehbo' 
-          AND TABLE_NAME = 'dozen'
+          WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
+          AND TABLE_NAME = 'EHBO_dozen'
           LIMIT 2, 999"; // Skipping the first two columns
 
 
@@ -176,7 +176,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "</tr>";
 
     // Now fetch data from the table and display it
-    $data_query = "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?";
+    $data_query = "SELECT * FROM EHBO_dozen WHERE lokaal = ?";
     if (mysqli_stmt_prepare($stmt, $data_query)) {
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
         mysqli_stmt_execute($stmt);
@@ -248,7 +248,7 @@ if(isset($_POST["btnAanpassen"]))
     //UPDATE `db_ehbo`.`dozen` SET `schaar` = 'ja', `ontsmettingsmiddel` = 'weinig', `handschoenen` = '3', `documenten` = 'ja' WHERE (`doosid` = '1');
 
     $aangepast="";
-    $query="UPDATE db_ehbo.dozen set ";
+    $query="UPDATE EHBO_dozen set ";
     foreach ($columnNames as $columnName)
     {
         if($_POST[$columnName])
@@ -270,7 +270,7 @@ if(isset($_POST["btnAanpassen"]))
     $query = substr($query, 0, -2);
 
 
-    if (mysqli_stmt_prepare($stmt, "SELECT * FROM db_ehbo.dozen WHERE lokaal = ?")) {
+    if (mysqli_stmt_prepare($stmt, "SELECT * FROM EHBO_dozen WHERE lokaal = ?")) {
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
@@ -284,7 +284,7 @@ if(isset($_POST["btnAanpassen"]))
         {
             echo "gelukt";
 //INSERT INTO `db_ehbo`.`logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES ('1', 'datum', 'K123', '2');
-            if(mysqli_stmt_prepare($stmt,"INSERT INTO `db_ehbo`.`logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES (?, ?, ?, ?);"))
+            if(mysqli_stmt_prepare($stmt,"INSERT INTO `gtiictbeokcommon`.`EHBO_logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES (?, ?, ?, ?);"))
             {
                 $date = date("Y-m-d");
                 $status= "Inhoud doos aangepast (".$aangepast.")";
