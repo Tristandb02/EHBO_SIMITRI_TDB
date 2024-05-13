@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
+    <!-- Topbar Start --><!--
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- Topbar End -->
 
 
@@ -71,7 +71,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="https://www.beveren.be/nl/scholen/gti-beveren" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
