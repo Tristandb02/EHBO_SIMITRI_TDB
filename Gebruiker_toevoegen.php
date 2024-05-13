@@ -44,7 +44,7 @@ if(isset($_POST['cmdSend']))
 {
     $BasisWW = "Test123";
     //1: verbinding maken met de database
-    include ('Verbinding.php');
+    include('Verbinding.php');
 
 //2: als de verbinding gelukt is
     if($link)
