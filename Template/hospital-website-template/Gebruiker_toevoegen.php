@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
+    <!-- Topbar Start --><!--
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -64,37 +64,38 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    --><!-- Topbar End -->
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="Home_Beheerder.php" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
+                <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link active">About</a>
-                        <a href="service.php" class="nav-item nav-link">Service</a>
-                        <a href="price.php" class="nav-item nav-link">Pricing</a>
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="Gebruikers.php" class="dropdown-item">The Team</a>
-                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.php" class="dropdown-item">Appointment</a>
-                                <a href="search.php" class="dropdown-item">Search</a>
+                                <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
+                                <a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>
+                                <a href="logboek.php" class="dropdown-item">Logboek</a>
+                                <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
+                                <a href="testimonial.php" class="dropdown-item">Ontbrekende Items</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+
+
                     </div>
                 </div>
             </nav>
@@ -103,7 +104,170 @@
     <!-- Navbar End -->
 
 
-    <!-- About Start -->
+
+    <!--hier door doet de navbar raar door (width: 80%; en padding: 20px;)dit stond bij de body -->
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gebruiker toevoegen</title>
+        <style>
+
+            body {
+
+                font-family: Arial, sans-serif;
+                margin: 0 auto;
+
+            }
+            h2 {
+                text-align: center;
+            }
+            form {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="text"],
+            select {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            p {
+                margin-top: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+
+
+    <form method="post">
+        <h2>Gebruiker toevoegen</h2>
+
+        <label for="Voornaam"></label>
+        <input type="text" name="Voornaam" id="Voornaam" placeholder="Voornaam">
+
+        <label for="Achternaam"></label>
+        <input type="text" name="Achternaam" id="Achternaam" placeholder="Achternaam">
+
+        <label for="Mail"></label>
+        <input type="text" name="Mail" id="Mail" placeholder="Mail">
+
+        <label for="Rol"></label>
+        <select name="Rol">
+            <option value="gebruiker">gebruiker</option>
+            <option value="beheerder">beheerder</option>
+        </select>
+
+        <input type="submit" value="Toevoegen" Name="cmdSend">
+        <p>Het standaard wachtwoord is Test123</p>
+    </form>
+
+    </body>
+    </html>
+
+    <?php
+    if(isset($_POST["btnTerug"]))
+    {
+        session_abort();
+        header("Location: Home_Beheerder.php");
+    }
+
+    if(isset($_POST['cmdSend']))
+    {
+        $BasisWW = "Test123";
+        //1: verbinding maken met de database
+        include('Verbinding.php');
+
+        //2: als de verbinding gelukt is
+        if($link)
+        {
+            //3: opbouw van de query
+            //query met een parameters
+            $query = 'INSERT INTO `EHBO_gebruikers` (`voornaam`, `achternaam`, `wachtwoord`, `mail`, `rol`) VALUES (?, ?, ?, ?, ?);
+';
+            //echo $query.'<br>';
+
+            //4a: statement initialiseren op basis van de link
+            $statement = mysqli_stmt_init($link);
+
+            //4b: prepared statement maken op basis van de query en het statement
+            if (mysqli_stmt_prepare($statement,$query))
+            {
+                //4c: parameter een waarde geven (= vraagteken vervangen)
+                mysqli_stmt_bind_param($statement,'sssss', $Voornaam, $Achternaam, $Wachtwoord, $Mail, $Rol);
+                $Voornaam = $_POST['Voornaam'];
+                $Achternaam = $_POST['Achternaam'];
+                $Wachtwoord = password_hash($BasisWW, PASSWORD_DEFAULT);
+                $Mail = $_POST['Mail'];
+                $Rol = $_POST['Rol'];
+
+                //5a: statement uitvoeren
+
+                if (mysqli_stmt_execute($statement))
+                {
+                    echo 'Gebruiker toegevoegd';
+                }
+                else{
+                    echo 'insert niet gelukt'.mysqli_stmt_error($statement);
+                }
+
+            }
+            else
+            {
+                echo mysqli_stmt_error($statement);
+            }
+
+            //6: verbining sluiten
+            mysqli_close($link);
+        }
+        else
+        {
+            echo '<br> verbining niet gelukt '.mysqli_connect_error();
+        }
+
+    }
+
+
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- About Start --><!--
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row gx-5">
@@ -148,10 +312,10 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
+    --><!-- About End -->
 
 
-    <!-- Search Start -->
+    <!-- Search Start --><!--
     <div class="container-fluid bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -173,10 +337,10 @@
             </div>
         </div>
     </div>
-    <!-- Search End -->
+    --><!-- Search End -->
 
 
-    <!-- Team Start -->
+    <!-- Team Start --><!--
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -244,10 +408,10 @@
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    --><!-- Team End -->
 
 
-    <!-- Footer Start -->
+    <!-- Footer Start --><!--
     <div class="container-fluid bg-dark text-light mt-5 py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -311,7 +475,7 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    --><!-- Footer End -->
 
 
     <!-- Back to Top -->

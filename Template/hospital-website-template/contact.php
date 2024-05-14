@@ -80,13 +80,13 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
-                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="Gebruiker_toevoegen.php" class="nav-item nav-link">About</a>
                         <a href="service.php" class="nav-item nav-link">Service</a>
                         <a href="logboek.php" class="nav-item nav-link">Pricing</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Blog Grid</a>
                                 <a href="detail.php" class="dropdown-item">Blog Detail</a>
                                 <a href="Gebruikers.php" class="dropdown-item">The Team</a>
                                 <a href="testimonial.php" class="dropdown-item">Testimonial</a>

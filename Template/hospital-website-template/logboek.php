@@ -86,10 +86,10 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
-                                <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
+                                <a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
                                 <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
-                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
@@ -134,14 +134,14 @@
 
     <?php
     session_start();
-    include "Verbinding1.php";
+    include "Verbinding.php";
 
     // Check connection
     if (mysqli_connect_errno()) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from db_ehbo.gebruikers");
+    $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from EHBO_gebruikers");
 
     if (mysqli_num_rows($result) > 0) {
         $namenLL = array();
@@ -152,7 +152,7 @@
     }
 
     // Query to fetch data from the table
-    $query = "SELECT logid, idLeerkracht, datum, lokaal, status FROM logboek";
+    $query = "SELECT logid, idLeerkracht, datum, lokaal, status FROM EHBO_logboek";
     $result = mysqli_query($link, $query);
 
     if (mysqli_num_rows($result) > 0) {
