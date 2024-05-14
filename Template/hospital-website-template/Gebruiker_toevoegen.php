@@ -90,7 +90,7 @@
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
                                 <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
                                 <a href="testimonial.php" class="dropdown-item">Ontbrekende Items</a>
-                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
@@ -199,14 +199,14 @@
     {
         $BasisWW = "Test123";
         //1: verbinding maken met de database
-        include('Verbinding1.php');
+        include('Verbinding.php');
 
         //2: als de verbinding gelukt is
         if($link)
         {
             //3: opbouw van de query
             //query met een parameters
-            $query = 'INSERT INTO `db_ehbo`.`gebruikers` (`voornaam`, `achternaam`, `wachtwoord`, `mail`, `rol`) VALUES (?, ?, ?, ?, ?);
+            $query = 'INSERT INTO `EHBO_gebruikers` (`voornaam`, `achternaam`, `wachtwoord`, `mail`, `rol`) VALUES (?, ?, ?, ?, ?);
 ';
             //echo $query.'<br>';
 
