@@ -192,7 +192,7 @@
     {
         if($_POST["Item"]!="handschoenen")
         {
-            if(mysqli_stmt_prepare($stmt,"select lokaal from db_ehbo.dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
+            if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
             {
                 mysqli_stmt_execute($stmt);
                 $res = mysqli_stmt_get_result($stmt);
@@ -219,7 +219,7 @@
 
         }
         else {
-            if (mysqli_stmt_prepare($stmt, "select lokaal from db_ehbo.dozen where " . $_POST["Item"] . " = 1")) {
+            if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $_POST["Item"] . " = 1")) {
                 mysqli_stmt_execute($stmt);
                 $res = mysqli_stmt_get_result($stmt);
                 while ($row = mysqli_fetch_assoc($res)) {
