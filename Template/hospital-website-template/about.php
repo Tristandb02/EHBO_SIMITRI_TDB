@@ -81,7 +81,7 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
                         <a href="about.html" class="nav-item nav-link active">About</a>
-                        <a href="OverzichtKlas.php" class="nav-item nav-link">Service</a>
+                        <a href="service.php" class="nav-item nav-link">Service</a>
                         <a href="price.php" class="nav-item nav-link">Pricing</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
