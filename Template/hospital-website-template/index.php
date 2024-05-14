@@ -127,11 +127,13 @@ if(isset($_POST['cmdSend'])) {
 
         if ($Role == "gebruiker") {
             $_SESSION["Rol"] = "gebruiker";
+            setcookie("Rol","gebruiker",time()+300, "/");
             header("location: Home_Gebruiker.php");
         }
 
         if ($Role == "beheerder") {
             $_SESSION["Rol"] = "beheerder";
+            setcookie("Rol","beheerder",time()+300, "/");
             header("location: Home_Beheerder.php");
         }
     }
