@@ -159,11 +159,12 @@
     include 'Verbinding.php';
     $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
-          WHERE TABLE_SCHEMA = 'db_ehbo' 
-          AND TABLE_NAME = 'dozen'
+          WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
+          AND TABLE_NAME = 'EHBO_dozen'
           LIMIT 2, 999"; // Skipping the first two columns
 
     $stmt = mysqli_stmt_init($link);
+    $T = 0;
     $columnNames = array(); // Initialize an array to store column names
 
     if (mysqli_stmt_prepare($stmt, $query)) {
@@ -178,15 +179,70 @@
         while ($row = mysqli_fetch_assoc($res)) {
 
             echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
+            $columnNames[$T] = $row['COLUMN_NAME'];
+            $T++;
         }
     }
-    echo "<input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
-    echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
+    echo "<br><input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
+    echo "<input type='submit' name='btnSend' value='Verstuur op mail'><br><input type='submit' name='btnAlles' value='Laat alles zien'>";
 
 
 
     $LokalenOntbreek="";
     $intLokalenOntbreek=0;
+    if(isset($_POST['btnAlles']))
+    {
+        foreach($columnNames as $Item)
+        {
+
+                if($Item!="handschoenen")
+                {
+                    if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$Item." = 'Niet Aanwezig'"))
+                    {
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        while ($row=mysqli_fetch_assoc($res))
+                        {
+                            $intLokalenOntbreek++;
+                            $LokalenOntbreek.=$row["lokaal"].", ";
+
+                        }
+
+                        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                        if ($intLokalenOntbreek != 0)
+                        {
+                            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$Item."  in de volgende lokalen: ".$LokalenOntbreek;
+                            $_SESSION['Ontbrekend'] = $Ontbreek;
+                            echo "$Ontbreek";
+                        }
+
+
+                    }
+
+                }
+                else {
+                    if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 1")) {
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $intLokalenOntbreek++;
+                            $LokalenOntbreek .= $row["lokaal"] . ", ";
+
+                        }
+
+                        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                        if ($intLokalenOntbreek != 0) {
+                            $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                            $_SESSION['Ontbrekend'] .= $Ontbreek."<br><br>";
+                            echo "$Ontbreek";
+                        }
+
+                    }
+                }
+
+            }
+
+    }
 
     if(isset($_POST["Item"]))
     {
@@ -260,7 +316,7 @@
     </head> 
     <body> 
         
-        <p>inschrijving van '.$_SESSION["Ontbrekend"].'</p>
+        <p>'.$_SESSION["Ontbrekend"].'</p>
     </body> 
     </html>';
 
