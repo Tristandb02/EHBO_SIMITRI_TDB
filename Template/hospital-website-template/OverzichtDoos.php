@@ -175,6 +175,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     }
     echo "</tr>";
 
+
     // Now fetch data from the table and display it
     $data_query = "SELECT * FROM EHBO_dozen WHERE lokaal = ?";
     if (mysqli_stmt_prepare($stmt, $data_query)) {
@@ -272,6 +273,7 @@ if(isset($_POST["btnAanpassen"]))
 
     if (mysqli_stmt_prepare($stmt, "SELECT * FROM EHBO_dozen WHERE lokaal = ?")) {
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
+        echo $_SESSION["klas"];
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
         $id=mysqli_fetch_row($res);
