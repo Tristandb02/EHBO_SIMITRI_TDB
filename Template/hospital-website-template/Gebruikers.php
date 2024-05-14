@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
+    <!-- Topbar Start --><!--
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -64,37 +64,37 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    --><!-- Topbar End -->
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="Home_Beheerder.php" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>GTIbeveren</h1>
+                <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
-                        <a href="about.php" class="nav-item nav-link">About</a>
-                        <a href="service.php" class="nav-item nav-link">Service</a>
-                        <a href="logboek.php" class="nav-item nav-link">Pricing</a>
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
+
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="team.html" class="dropdown-item active">The Team</a>
-                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.php" class="dropdown-item">Appointment</a>
-                                <a href="search.php" class="dropdown-item">Search</a>
+                                <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
+                                <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
+                                <a href="logboek.php" class="dropdown-item">Logboek</a>
+                                <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
+                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+
+
                     </div>
                 </div>
             </nav>
@@ -103,7 +103,96 @@
     <!-- Navbar End -->
 
 
-    <!-- Team Start -->
+
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gebruikers</title>
+        <style>
+            table {
+                margin: 0 auto; /* Zorgt dat de tabel in het midden van de pagina staat */
+                border-collapse: collapse;
+                width: 80%;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+
+    <?php
+    // Start de sessie
+    session_start();
+
+    // Inclusie van de verbinding
+    include('Verbinding1.php');
+
+    // Controleer of de 'btnTerug' is ingediend om terug te keren
+    if (isset($_POST["btnTerug"])) {
+        // Redirect naar Home_Beheerder.php
+        header("Location: Home_Beheerder.php");
+        exit; // Stop de verdere uitvoering van de script
+    }
+
+    // Controleren op indiening van het verwijderingsformulier
+    if (isset($_POST['btnVerwijder'])) {
+        // Controleer of de gebruikerid is ingesteld
+        // Voorbereiden en uitvoeren van de verwijderingsquery
+        $query = "DELETE FROM db_ehbo.gebruikers WHERE gebruikerid = ?";
+        $statement = mysqli_prepare($link, $query);
+        mysqli_stmt_bind_param($statement, 'i', $_POST['btnVerwijder']);
+        if (mysqli_stmt_execute($statement)) {
+            // Als verwijdering succesvol is, geef dan een succesbericht weer
+            echo 'Gebruiker is verwijderd';
+        } else {
+            // Als er een fout optreedt, geef dan een foutmelding weer
+            echo 'Verwijderen is mislukt: ' . mysqli_stmt_error($statement);
+        }
+    }
+
+    // Query om alle gebruikers op te halen
+    $query = 'SELECT gebruikerid, voornaam, achternaam, mail, rol FROM db_ehbo.gebruikers ORDER BY achternaam ASC';
+    $resultaat = mysqli_query($link, $query);
+
+    // Controleren of er resultaten zijn
+    if ($resultaat) {
+        echo '<form method="post">';
+        echo '<table border="1">';
+        echo '<tr><th>Gebruikerid</th><th>Achternaam</th><th>Voornaam</th><th>Mail</th><th>Rol</th><th>Gebruiker verwijderen</th></tr>';
+        while ($row = mysqli_fetch_assoc($resultaat)) {
+            echo '<tr>';
+            echo "<td>{$row['gebruikerid']}</td>";
+            echo "<td>{$row['achternaam']}</td>";
+            echo "<td>{$row['voornaam']}</td>";
+            echo "<td>{$row['mail']}</td>";
+            echo "<td>{$row['rol']}</td>";
+            echo '<td><button type="submit" value='.$row["gebruikerid"].' name="btnVerwijder" >Verwijder</button></td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        echo '</form>';
+    } else {
+        // Geen resultaten gevonden, geef een foutmelding weer
+        echo 'Geen gebruikers gevonden: ' . mysqli_error($link);
+    }
+
+    // Sluit de verbinding
+    mysqli_close($link);
+    ?>
+    </body>
+    </html>
+
+
+
+    <!-- Team Start --><!--
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -171,7 +260,7 @@
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    --><!-- Team End -->
 
 
     <!-- Footer Start -->

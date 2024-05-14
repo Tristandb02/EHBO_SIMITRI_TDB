@@ -88,7 +88,7 @@
                                 <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
                                 <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
-                                <a href="team.php" class="dropdown-item">Lijst gebruiker</a>
+                                <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
                                 <a href="testimonial.php" class="dropdown-item">Ontbrekende Items</a>
                                 <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
