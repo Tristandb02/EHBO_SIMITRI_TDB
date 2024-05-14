@@ -176,14 +176,13 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "</tr>";
 
 echo $_SESSION["klas"];
-echo "1";
     // Now fetch data from the table and display it
     $data_query = "SELECT * FROM EHBO_dozen WHERE lokaal = ?";
     if (mysqli_stmt_prepare($stmt, $data_query)) {
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
         mysqli_stmt_execute($stmt);
         $data_res = mysqli_stmt_get_result($stmt);
-        echo "2";
+
           while ($data_row = mysqli_fetch_row($data_res)) {
     // Check if the row contains any non-empty values
     if (array_filter($data_row)) {
@@ -333,7 +332,7 @@ mysqli_close($link);
 </html>
 
 
-?>
+
 
 
 <!-- Services End -->

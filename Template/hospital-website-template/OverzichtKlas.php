@@ -319,7 +319,7 @@
 
 </html>
 <?php
-echo "<form method='post' action='OverzichtDoos.php'><table style='width: 40%; height: 40%' border='1'>";
+echo "<form method='post'><table style='width: 40%; height: 40%' border='1'>";
 for($i=1; $i<=3; $i++) {
     echo "<tr>";
     for($i2=8; $i2<=23; $i2++) {
