@@ -156,6 +156,7 @@
     </div>-->
     <?php
     //verbinding met database
+    session_start();
     include 'Verbinding.php';
     $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
