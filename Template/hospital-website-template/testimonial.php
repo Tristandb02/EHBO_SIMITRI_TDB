@@ -194,7 +194,8 @@
     {
         foreach($columnNames as $Item)
         {
-
+                $intLokalenOntbreek = 0;
+                $LokalenOntbreek = "";
                 if($Item!="handschoenen")
                 {
                     if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$Item." = 'Niet Aanwezig'"))
@@ -233,8 +234,8 @@
                         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                         if ($intLokalenOntbreek != 0) {
                             $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
-                            $_SESSION['Ontbrekend'] .= $Ontbreek."<br><br>";
-                            echo "$Ontbreek";
+                            $_SESSION['Ontbrekend'] .= $Ontbreek;
+                            echo "$Ontbreek <br><br>";
                         }
 
                     }
