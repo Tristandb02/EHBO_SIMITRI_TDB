@@ -109,7 +109,215 @@
     <!-- Navbar End -->
 
 
-    <!-- Blog Start -->
+
+    <!--hier door doet de navbar raar door (width: 80%; en padding: 20px;)dit stond bij de body -->
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+        <title>Login</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0 auto;
+
+            }
+            h1 {
+                text-align: center;
+            }
+            form {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="password"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            .login {
+                text-align: center;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                padding: 20px;
+                margin-top: 50px;
+            }
+            .login h1 {
+                margin-bottom: 20px;
+            }
+            .login label {
+                text-align: left;
+            }
+            .login h3 {
+                margin-top: 20px;
+            }
+            p {
+                margin-top: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+    <table>
+        <tr>
+            <td>
+                <a href="https://www.gtibeveren.be"><img src="assets/images/logoBV.png" alt="" align="left"/></a>
+            </td>
+            <td width="80%">
+                <!--img src="images/cheese3.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;"/-->
+            </td>
+
+        </tr>
+    </table>
+    <form method="post">
+
+            <h1>Login</h1>
+
+
+            <input type="password" name="OudWW" placeholder="Oud Wachtwoord" id="username" required><!-- input textbox voor de email -->
+
+            <input type="password" name="NieuwWW" placeholder="Nieuw Wachtwoord" id="password" required><!-- input textbox voor het wachtwoord -->
+
+            <input type="password" name="HerhaalWW" placeholder="Herhaal Wachtwoord" id="password" required>
+            <input type="submit" value="Pas Aan" Name="cmdSend">
+
+            <p>Het standaard wachtwoord is Test123</p>
+
+    </form>
+
+    </body>
+    </html>
+
+    <?php
+    session_start();
+
+    $mail = $_SESSION["Mail"];
+    echo $_SESSION["Mail"];
+
+    if(isset($_POST['cmdSend'])) {
+        //verbinding maken met de database
+        include('Verbinding.php');
+        echo "button pushed";
+
+        //als de berbinding gelukt is
+        if ($link) {
+            echo "link gelegd";
+            //opbouwen van de query
+            //query met een parameter
+            $query = 'select * from EHBO_gebruikers where mail=?';
+            echo $query . '<br>';
+
+            //tatement initialiseren op basis van de query
+            $statement = mysqli_stmt_init($link);
+
+            //prepared statement maken op basis van de query en het statement
+            if (mysqli_stmt_prepare($statement, $query)) {
+
+                mysqli_stmt_bind_param($statement, 's', $mailParam1);
+                $mailParam1 = $mail;
+                echo $mailParam1;
+                echo "parameter 1";
+
+
+                mysqli_stmt_execute($statement);
+
+                if (mysqli_stmt_execute($statement))
+                {
+                    $Result = mysqli_stmt_get_result($statement);
+
+                    $row = mysqli_fetch_assoc($Result);
+
+                    if ($row != null)
+                    {
+
+
+                        if ($_POST["OudWW"] != $_POST["NieuwWW"])
+                        {
+                            if ($_POST["NieuwWW"] == $_POST["HerhaalWW"])
+                            {
+                                $WWhash = password_hash($_POST["NieuwWW"], PASSWORD_DEFAULT);
+                                $query1 = 'update gebruikers set wachtwoord = ? where mail = ?';
+
+                                $statement1 = mysqli_stmt_init($link);
+
+                                if (mysqli_stmt_prepare($statement1, $query1))
+                                {
+                                    mysqli_stmt_bind_param($statement1, 'ss', $WachtwoordParam, $MailParam);
+                                    $WachtwoordParam = $WWhash;
+                                    $MailParam = $mail;
+                                }
+                                mysqli_stmt_execute($statement1);
+
+                                header("location: index.php");
+
+                            } else
+                            {
+                                echo "Het herhaalde wachtwoord is niet gelijk aan het nieuwe wachtwoord!";
+                            }
+
+                        } else
+                        {
+                            echo "Niet hetzelfde wachtwoord kiezen!";
+                        }
+                    }
+                }
+                else
+                {
+                    echo mysqli_stmt_error($statement);
+                }
+
+
+
+            } else {
+                echo '<br>' . mysqli_stmt_error($statement);
+            }
+
+            //6: de verbinding sluiten
+            mysqli_close($link);
+        } else {
+            echo '<br>verbinding niet gelukt' . mysqli_connect_error();
+        }
+
+    }
+
+    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Blog Start --><!--
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -303,10 +511,10 @@
             </div>
         </div>
     </div>
-    <!-- Blog End -->
+    --><!-- Blog End -->
     
 
-    <!-- Footer Start -->
+    <!-- Footer Start --><!--
     <div class="container-fluid bg-dark text-light mt-5 py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -370,7 +578,7 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    --><!-- Footer End -->
 
 
     <!-- Back to Top -->
