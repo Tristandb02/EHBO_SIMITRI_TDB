@@ -82,7 +82,7 @@
                         <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
                         <a href="about.php" class="nav-item nav-link">About</a>
                         <a href="service.php" class="nav-item nav-link">Service</a>
-                        <a href="price.php" class="nav-item nav-link">Pricing</a>
+                        <a href="logboek.php" class="nav-item nav-link">Pricing</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
