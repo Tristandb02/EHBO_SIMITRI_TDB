@@ -68,33 +68,33 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm">
+    <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
+                <a href="Home_Beheerder.php" class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
-
+                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
+                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="service.php" class="nav-item nav-link">Service</a>
+                        <a href="price.html" class="nav-item nav-link active">Pricing</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="testimonial.php" class="dropdown-item">Aanvullen</a>
-                                <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
-                                <a href="price.php" class="dropdown-item">Logboek</a>
-                                <a href="team.php" class="dropdown-item">Lijst gebruiker</a>
-                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
-                                <a href="index.php" class="dropdown-item">Afmelden</a>
+                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
+                                <a href="team.php" class="dropdown-item">The Team</a>
+                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
+                                <a href="appointment.php" class="dropdown-item">Appointment</a>
+                                <a href="search.php" class="dropdown-item">Search</a>
                             </div>
                         </div>
-
-
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -103,98 +103,7 @@
     <!-- Navbar End -->
 
 
-
-
-
-
-
-    <!DOCTYPE html>
-    <html lang="nl">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Logboek</title>
-        <style>
-            table {
-                margin: 0 auto; /* Zorgt dat de tabel in het midden van de pagina staat */
-                border-collapse: collapse;
-                width: 80%;
-            }
-            th, td {
-                padding: 8px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-        </style>
-    </head>
-    <body>
-
-    <?php
-    session_start();
-    include "Verbinding1.php";
-
-    // Check connection
-    if (mysqli_connect_errno()) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from db_ehbo.gebruikers");
-
-    if (mysqli_num_rows($result) > 0) {
-        $namenLL = array();
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            array_push($namenLL, $row["gebruikerid"] . $row["achternaam"] . " " . $row["voornaam"]);
-        }
-    }
-
-    // Query to fetch data from the table
-    $query = "SELECT logid, idLeerkracht, datum, lokaal, status FROM logboek";
-    $result = mysqli_query($link, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        // Output data of each row
-        echo "<table id='logTable' border='1'><tr><th>Log ID</th><th>Leerkracht</th><th>Datum</th><th>Lokaal</th><th>Status</th></tr>";
-        while ($row = mysqli_fetch_assoc($result)) {
-            $idLL = $row["idLeerkracht"];
-
-            echo "<tr><td>" . $row["logid"] . "</td><td>";
-            for ($i = 0; $i < sizeof($namenLL); $i++) {
-                if (substr($namenLL[$i], 0, 1) == $row["idLeerkracht"]) {
-                    echo substr($namenLL[$i], 1);
-                }
-            }
-
-            echo "</td><td>" . $row["datum"] . "</td><td>" . $row["lokaal"] . "</td><td>" . $row["status"] . "</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "leeg logboek";
-    }
-    mysqli_close($link);
-    if (isset($_POST["btnGoHome"])) {
-        echo "hey";
-        if ($_SESSION["Rol"] == "gebruiker") {
-            header("location: Home_Gebruiker.php");
-        }
-
-        if ($_SESSION["Rol"] == "beheerder") {
-            header("location: Home_Beheerder.php");
-        }
-    }
-    ?>
-    </body>
-    </html>
-
-
-
-
-
-
-    <!-- Pricing Plan Start --><!--
+    <!-- Pricing Plan Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -277,10 +186,10 @@
             </div>
         </div>
     </div>
-    --><!-- Pricing Plan End -->
+    <!-- Pricing Plan End -->
 
 
-    <!-- Appointment Start --><!--
+    <!-- Appointment Start -->
     <div class="container-fluid bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="row gx-5">
@@ -344,10 +253,10 @@
             </div>
         </div>
     </div>
-    --><!-- Appointment End -->
+    <!-- Appointment End -->
 
 
-    <!-- Team Start --><!--
+    <!-- Team Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
@@ -415,10 +324,10 @@
             </div>
         </div>
     </div>
-    --><!-- Team End -->
+    <!-- Team End -->
 
 
-    <!-- Footer Start --><!--
+    <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -482,7 +391,7 @@
             </div>
         </div>
     </div>
-   --><!-- Footer End -->
+    <!-- Footer End -->
 
 
     <!-- Back to Top -->

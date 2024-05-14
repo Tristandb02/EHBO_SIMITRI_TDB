@@ -80,7 +80,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
+                        <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -89,6 +89,7 @@
                                 <a href="about.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="price.php" class="dropdown-item">Logboek</a>
                                 <a href="team.php" class="dropdown-item">Lijst gebruiker</a>
+                                <a href="testimonial.php" class="dropdown-item">Ontbrekende Items</a>
                                 <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
@@ -112,7 +113,7 @@
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">EHBO</h5>
                     <h1 class="display-1 text-white mb-md-4">Welcome Beheerder</h1>
                     <div class="pt-2">
-                        <a href="service.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Klassen overzicht</a>
+                        <a href="OverzichtKlas.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Klassen overzicht</a>
                         <a href="index.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Afmelden</a>
                     </div>
                 </div>

@@ -80,7 +80,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="Home_Gebruiker.php" class="nav-item nav-link">Home</a>
-                    <a href="service.php" class="nav-item nav-link active">Klassen     overzicht</a>
+                    <a href="OverzichtKlas.php" class="nav-item nav-link active">Klassen     overzicht</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                         <div class="dropdown-menu m-0">

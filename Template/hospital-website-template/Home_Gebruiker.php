@@ -80,7 +80,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>
-                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
+                        <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                             <div class="dropdown-menu m-0">
@@ -105,7 +105,7 @@
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">EHBO</h5>
                     <h1 class="display-1 text-white mb-md-4">Welkom Gebruiker</h1>
                     <div class="pt-2">
-                        <a href="service.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Klassen overzicht</a>
+                        <a href="OverzichtKlas.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Klassen overzicht</a>
                         <a href="index.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Afmelden</a>
                     </div>
                 </div>
