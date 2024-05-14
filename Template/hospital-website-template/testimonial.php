@@ -158,6 +158,7 @@
     //verbinding met database
     session_start();
     include 'Verbinding.php';
+    $Total = "";
     $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
           WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
@@ -198,6 +199,7 @@
         {
                 $intLokalenOntbreek = 0;
                 $LokalenOntbreek = "";
+
                 if($Item!="handschoenen")
                 {
                     if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$Item." = 'Niet Aanwezig'"))
@@ -220,8 +222,9 @@
                         }
 
 
-                    }
 
+                    }
+                    $Total .= $Ontbreek;
                 }
                 else {
                     if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 1")) {
@@ -236,6 +239,7 @@
                         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                         if ($intLokalenOntbreek != 0) {
                             $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                            $Total .= "<br>".$Ontbreek;
                             $_SESSION['Ontbrekend'] .= $Ontbreek;
                             echo "$Ontbreek <br><br>";
                         }
