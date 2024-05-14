@@ -295,6 +295,7 @@
 
         }
     }
+    $Total = $Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4;
     if(isset($_POST['btnSend']))
     {
         echo $_SESSION['Ontbrekend'];
@@ -309,15 +310,15 @@
         $subject = "Ontbrekende in EHBO doosjes";
 
         $htmlContent =
-            '<html> 
+            "<html> 
     <head> 
         <title>Ontbreken EHBO doosjes</title> 
     </head> 
     <body> 
         
-        <p>'.$Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4.'</p>
-    </body> 
-    </html>';
+        <p>Ontbreekingen:<br>.$Total</p>
+    </body>
+    </html>";
 
         // Set content-type header for sending HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
