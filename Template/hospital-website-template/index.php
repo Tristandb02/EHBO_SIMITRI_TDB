@@ -44,6 +44,7 @@ Authors: Tristan De Ben, Milan Van Wonterghem
 </html>
 
 <?php
+session_destroy();
 session_start();
 if(isset($_POST['cmdSend'])) {
 //verbinding maken met de database
