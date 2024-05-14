@@ -89,7 +89,7 @@
                                 <a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
                                 <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
-                                <a href="blog.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
     session_start();
 
     // Inclusie van de verbinding
-    include('Verbinding1.php');
+    include('Verbinding.php');
 
     // Controleer of de 'btnTerug' is ingediend om terug te keren
     if (isset($_POST["btnTerug"])) {
@@ -159,7 +159,7 @@
     }
 
     // Query om alle gebruikers op te halen
-    $query = 'SELECT gebruikerid, voornaam, achternaam, mail, rol FROM db_ehbo.gebruikers ORDER BY achternaam ASC';
+    $query = 'SELECT gebruikerid, voornaam, achternaam, mail, rol FROM EHBO_gebruikers ORDER BY achternaam ASC';
     $resultaat = mysqli_query($link, $query);
 
     // Controleren of er resultaten zijn

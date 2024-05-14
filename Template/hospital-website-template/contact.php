@@ -86,7 +86,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Blog Grid</a>
                                 <a href="detail.php" class="dropdown-item">Blog Detail</a>
                                 <a href="Gebruikers.php" class="dropdown-item">The Team</a>
                                 <a href="testimonial.php" class="dropdown-item">Testimonial</a>

@@ -85,7 +85,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                             <div class="dropdown-menu m-0">
-                                <a href="blog.php" class="dropdown-item">Wachtwoord aanpassen</a>
+                                <a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoord aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
