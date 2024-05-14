@@ -161,8 +161,34 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
 
-    echo "<table border='1'>";
-    echo "<tr>";
+    echo "<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        input[type=radio], input[type=number] {
+            margin-top: 5px;
+        }
+    </style>";
+
+    echo "<table><tr>";
     // Fetch column names and display them as table headers
     while ($row = mysqli_fetch_assoc($res)) {
 
@@ -179,7 +205,6 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     }
     echo "</tr>";
 
-echo $_SESSION["klas"];
     // Now fetch data from the table and display it
     $data_query = "SELECT * FROM EHBO_dozen WHERE lokaal = ?";
     if (mysqli_stmt_prepare($stmt, $data_query)) {
