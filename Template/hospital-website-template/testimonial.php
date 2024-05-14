@@ -194,8 +194,6 @@
     $intLokalenOntbreek=0;
     if(isset($_POST['btnAlles']))
     {
-        $_SESSION['Ontbrekend'] = "";
-        echo "Leeggehaald 1";
         foreach($columnNames as $Item)
         {
                 $intLokalenOntbreek = 0;
@@ -217,15 +215,14 @@
                         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                         if ($intLokalenOntbreek != 0)
                         {
-                            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$Item."  in de volgende lokalen: ".$LokalenOntbreek;
-                            $_SESSION['Ontbrekend'] .= $Ontbreek;
-                            echo "$Ontbreek <br><br>";
+                            $Ontbreek1 = "Er ontbreken ".$intLokalenOntbreek." ".$Item."  in de volgende lokalen: ".$LokalenOntbreek;
+                            $_SESSION['Ontbrekend'] .= $Ontbreek1;
+                            echo "$Ontbreek1 <br><br>";
                         }
 
 
 
                     }
-                    $Total .= $Ontbreek;
                 }
                 else {
                     if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 1")) {
@@ -239,10 +236,10 @@
 
                         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                         if ($intLokalenOntbreek != 0) {
-                            $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
-                            $Total .= "<br>".$Ontbreek;
-                            $_SESSION['Ontbrekend'] .= $Ontbreek;
-                            echo "$Ontbreek <br><br>";
+                            $Ontbreek2 = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                            $Total .= "<br>".$Ontbreek2;
+                            $_SESSION['Ontbrekend'] .= $Ontbreek2;
+                            echo "$Ontbreek2 <br><br>";
                         }
 
                     }
@@ -253,8 +250,6 @@
     }
 
     if(isset($_POST['btnZoek'])) {
-        $_SESSION['Ontbrekend'] = "";
-        echo "Leeggehaald 2";
         if (isset($_POST["Item"])) {
             if ($_POST["Item"] != "handschoenen") {
                 if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $_POST["Item"] . " = 'Niet Aanwezig'")) {
@@ -268,9 +263,8 @@
 
                     $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                     if ($intLokalenOntbreek != 0) {
-                        $Ontbreek = "Er ontbreken " . $intLokalenOntbreek . " " . $_POST["Item"] . "  in de volgende lokalen: " . $LokalenOntbreek;
-                        $_SESSION['Ontbrekend'] = $Ontbreek;
-                        echo "$Ontbreek";
+                        $Ontbreek3 = "Er ontbreken " . $intLokalenOntbreek . " " . $_POST["Item"] . "  in de volgende lokalen: " . $LokalenOntbreek;
+                        echo "$Ontbreek3";
                     } else {
                         echo "Er ontbreken geen " . $_POST["Item"];
                     }
@@ -289,9 +283,9 @@
 
                     $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                     if ($intLokalenOntbreek != 0) {
-                        $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
-                        $_SESSION['Ontbrekend'] .= $Ontbreek;
-                        echo "$Ontbreek";
+                        $Ontbreek4 = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                        $_SESSION['Ontbrekend'] .= $Ontbreek4;
+                        echo "$Ontbreek4";
                     } else {
                         echo "Er ontbreken geen " . $_POST["Item"];
                     }
@@ -301,6 +295,7 @@
 
         }
     }
+    $Total = $Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4;
     if(isset($_POST['btnSend']))
     {
         echo $_SESSION['Ontbrekend'];
@@ -315,15 +310,15 @@
         $subject = "Ontbrekende in EHBO doosjes";
 
         $htmlContent =
-            '<html> 
+            "<html> 
     <head> 
         <title>Ontbreken EHBO doosjes</title> 
     </head> 
     <body> 
         
-        <p>'.$_SESSION["Ontbrekend"].'</p>
-    </body> 
-    </html>';
+        <p>Ontbreekingen:<br>.$Total</p>
+    </body>
+    </html>";
 
         // Set content-type header for sending HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
