@@ -1,5 +1,17 @@
-<?php session_start();?>
-<!DOCTYPE html>
+<?php
+session_start();
+ob_start(); // Start output buffering
+
+// Handle form submission
+if (isset($_POST["klaslink"])) {
+    $_SESSION["klas"] = $_POST["klaslink"];
+    header("Location: OverzichtDoos.php");
+    exit(); // Ensure no further code is executed after the redirect
+}
+?>
+
+
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -335,12 +347,6 @@ for($i=1; $i<=3; $i++) {
 echo "</form>";
 
 
-if(isset($_POST["klaslink"]))
-{
-    echo "TYOOOOO";
-    $_SESSION["klas"]=$_POST["klaslink"];
 
-    header("location: OverzichtDoos.php");
-}
 
 ?>

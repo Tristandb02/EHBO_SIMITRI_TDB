@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,7 +120,7 @@ Author: Milan Van Wonterghem
 
 <?php
 include "Verbinding.php";
-session_start();
+
 echo "<h1>EHBO-doos van lokaal " . $_SESSION["klas"] . "</h1>";
 
 $stmt = mysqli_stmt_init($link);
