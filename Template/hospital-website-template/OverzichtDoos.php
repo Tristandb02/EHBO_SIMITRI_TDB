@@ -270,7 +270,7 @@ if(isset($_POST["btnAanpassen"]))
     //echo $query;
     $query = substr($query, 0, -2);
 
-
+    echo $_SESSION["klas"]."1";
     if (mysqli_stmt_prepare($stmt, "SELECT * FROM EHBO_dozen WHERE lokaal = ?")) {
         mysqli_stmt_bind_param($stmt, 's', $_SESSION["klas"]);
         echo $_SESSION["klas"];
