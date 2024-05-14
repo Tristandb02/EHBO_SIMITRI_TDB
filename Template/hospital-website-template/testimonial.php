@@ -88,7 +88,7 @@
                             <div class="dropdown-menu m-0">
                                 <a href="blog.php" class="dropdown-item">Blog Grid</a>
                                 <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="team.php" class="dropdown-item">The Team</a>
+                                <a href="Gebruikers.php" class="dropdown-item">The Team</a>
                                 <a href="testimonial.html" class="dropdown-item active">Testimonial</a>
                                 <a href="appointment.php" class="dropdown-item">Appointment</a>
                                 <a href="search.php" class="dropdown-item">Search</a>
