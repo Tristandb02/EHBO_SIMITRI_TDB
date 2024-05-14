@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
+    <!-- Topbar Start --><!--
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+    --><!-- Topbar End -->
 
 
     <!-- Navbar Start -->
