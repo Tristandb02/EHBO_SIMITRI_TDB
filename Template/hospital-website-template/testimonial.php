@@ -104,7 +104,7 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
+    <!--<div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
@@ -153,117 +153,108 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Testimonial End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
-                    <?php
-                    //verbinding met database
-                    include 'Verbinding.php';
-                    $query = "SELECT COLUMN_NAME 
+    </div>-->
+    <?php
+    //verbinding met database
+    include 'Verbinding.php';
+    $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
           WHERE TABLE_SCHEMA = 'db_ehbo' 
           AND TABLE_NAME = 'dozen'
           LIMIT 2, 999"; // Skipping the first two columns
 
-                    $stmt = mysqli_stmt_init($link);
-                    $columnNames = array(); // Initialize an array to store column names
+    $stmt = mysqli_stmt_init($link);
+    $columnNames = array(); // Initialize an array to store column names
 
-                    if (mysqli_stmt_prepare($stmt, $query)) {
-                        mysqli_stmt_execute($stmt);
-                        $res = mysqli_stmt_get_result($stmt);
+    if (mysqli_stmt_prepare($stmt, $query)) {
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
 
-                        echo "<table border='1'>";
-                        echo "<tr>";
-                        echo "<html>
+        echo "<table border='1'>";
+        echo "<tr>";
+        echo "<html>
 <form method='post'>
     <select name='Item' >";
-                        while ($row = mysqli_fetch_assoc($res)) {
+        while ($row = mysqli_fetch_assoc($res)) {
 
-                            echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
-                        }
-                    }
-                    echo "<input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
-                    echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
+            echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
+        }
+    }
+    echo "<input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
+    echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
 
 
 
-                    $LokalenOntbreek="";
-                    $intLokalenOntbreek=0;
+    $LokalenOntbreek="";
+    $intLokalenOntbreek=0;
 
-                    if(isset($_POST["Item"]))
-                    {
-                        if($_POST["Item"]!="handschoenen")
-                        {
-                            if(mysqli_stmt_prepare($stmt,"select lokaal from db_ehbo.dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
-                            {
-                                mysqli_stmt_execute($stmt);
-                                $res = mysqli_stmt_get_result($stmt);
-                                while ($row=mysqli_fetch_assoc($res))
-                                {
-                                    $intLokalenOntbreek++;
-                                    $LokalenOntbreek.=$row["lokaal"].", ";
+    if(isset($_POST["Item"]))
+    {
+        if($_POST["Item"]!="handschoenen")
+        {
+            if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
+            {
+                mysqli_stmt_execute($stmt);
+                $res = mysqli_stmt_get_result($stmt);
+                while ($row=mysqli_fetch_assoc($res))
+                {
+                    $intLokalenOntbreek++;
+                    $LokalenOntbreek.=$row["lokaal"].", ";
 
-                                }
+                }
 
-                                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
-                                if ($intLokalenOntbreek != 0)
-                                {
-                                    $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
-                                    $_SESSION['Ontbrekend'] = $Ontbreek;
-                                    echo "$Ontbreek";
-                                }
-                                else
-                                {
-                                    echo "Er ontbreken geen ".$_POST["Item"];
-                                }
+                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                if ($intLokalenOntbreek != 0)
+                {
+                    $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+                    $_SESSION['Ontbrekend'] = $Ontbreek;
+                    echo "$Ontbreek";
+                }
+                else
+                {
+                    echo "Er ontbreken geen ".$_POST["Item"];
+                }
 
-                            }
+            }
 
-                        }
-                        else {
-                            if (mysqli_stmt_prepare($stmt, "select lokaal from db_ehbo.dozen where " . $_POST["Item"] . " = 1")) {
-                                mysqli_stmt_execute($stmt);
-                                $res = mysqli_stmt_get_result($stmt);
-                                while ($row = mysqli_fetch_assoc($res)) {
-                                    $intLokalenOntbreek++;
-                                    $LokalenOntbreek .= $row["lokaal"] . ", ";
+        }
+        else {
+            if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $_POST["Item"] . " = 1")) {
+                mysqli_stmt_execute($stmt);
+                $res = mysqli_stmt_get_result($stmt);
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $intLokalenOntbreek++;
+                    $LokalenOntbreek .= $row["lokaal"] . ", ";
 
-                                }
+                }
 
-                                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
-                                if ($intLokalenOntbreek != 0) {
-                                    $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
-                                    $_SESSION['Ontbrekend'] = $Ontbreek;
-                                    echo "$Ontbreek";
-                                } else {
-                                    echo "Er ontbreken geen " . $_POST["Item"];
-                                }
+                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                if ($intLokalenOntbreek != 0) {
+                    $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                    $_SESSION['Ontbrekend'] = $Ontbreek;
+                    echo "$Ontbreek";
+                } else {
+                    echo "Er ontbreken geen " . $_POST["Item"];
+                }
 
-                            }
-                        }
+            }
+        }
 
-                    }
-                    if(isset($_POST['btnSend']))
-                    {
-                        // mail sturen
-                        //$to = $_POST['mail'];
-                        //echo 'mail';
-                        $testName = 'tristand101006@student.gtibeveren.be';
-                        $to = $testName; //extra ontvanger toevoegen $_POST['mail'].','.
-                        $from = 'tristand101006@student.gtibeveren.be';
-                        $fromName = 'GTI - EHBO';
+    }
+    if(isset($_POST['btnSend']))
+    {
+        // mail sturen
+        //$to = $_POST['mail'];
+        //echo 'mail';
+        $testName = 'tristand101006@student.gtibeveren.be';
+        $to = $testName; //extra ontvanger toevoegen $_POST['mail'].','.
+        $from = 'tristand101006@student.gtibeveren.be';
+        $fromName = 'GTI - EHBO';
 
-                        $subject = "Inschrijving kaas- en wijnavond GTI";
+        $subject = "Ontbrekende in EHBO doosjes";
 
-                        $htmlContent =
-                            '<html> 
+        $htmlContent =
+            '<html> 
     <head> 
         <title>Ontbreken EHBO doosjes</title> 
     </head> 
@@ -273,28 +264,38 @@
     </body> 
     </html>';
 
-                        // Set content-type header for sending HTML email
-                        $headers = "MIME-Version: 1.0" . "\r\n";
-                        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-                        // Additional headers
-                        $headers .= 'From: '.$fromName.'<'.$from.'>' . "\r\n";
-                        $testName = 'tristand101006@student.gtibeveren.be'; //werkt om mail in cc te krijgen
-                        $headers .= 'Cc:'.$testName. "\r\n";
+        // Additional headers
+        $headers .= 'From: '.$fromName.'<'.$from.'>' . "\r\n";
+        $testName = 'tristand101006@student.gtibeveren.be'; //werkt om mail in cc te krijgen
+        $headers .= 'Cc:'.$testName. "\r\n";
 
-                        // Send email
-                        if(mail($to, $subject, $htmlContent, $headers)){
-                            echo 'ok';
-                        }else{
-                            echo 'Email sending failed.';
-                        }
-                    }
-                    if(isset($_POST["btnTerug"]))
-                    {
-                        header("Location: Home_Beheerder.php");
-                    }
+        // Send email
+        if(mail($to, $subject, $htmlContent, $headers)){
+            echo 'ok';
+        }else{
+            echo 'Email sending failed.';
+        }
+    }
+    if(isset($_POST["btnTerug"]))
+    {
+        header("Location: Home_Beheerder.php");
+    }
 
-                    ?>
+    ?>
+    <!-- Testimonial End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light mt-5 py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
+
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
