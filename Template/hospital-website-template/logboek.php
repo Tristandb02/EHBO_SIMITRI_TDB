@@ -141,7 +141,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from db_ehbo.gebruikers");
+    $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from EHBO_gebruikers");
 
     if (mysqli_num_rows($result) > 0) {
         $namenLL = array();
