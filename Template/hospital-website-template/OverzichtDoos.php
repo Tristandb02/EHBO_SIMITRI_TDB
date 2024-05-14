@@ -1,5 +1,11 @@
 <?php
-session_start()
+session_start();
+$gelukt="";
+if($gelukt=="ja")
+{
+    header("location: OverzichtDoos.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -329,11 +335,12 @@ if(isset($_POST["btnAanpassen"]))
                      echo "logboek niet toegevoegd";
                  }
             }
+            $gelukt="ja";
 
 
 
 
-            header("location: OverzichtDoos.php");
+
         }
         else
         {
