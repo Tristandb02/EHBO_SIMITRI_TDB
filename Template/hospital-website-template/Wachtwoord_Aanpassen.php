@@ -94,7 +94,7 @@
                                    echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
                                    echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>';
                                }
-                                echo '<a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
+                                echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
                                 echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
                                 ?>
                             </div>
@@ -220,7 +220,7 @@
 
         //als de berbinding gelukt is
         if ($link) {
-            echo "link gelegd";
+            //echo "link gelegd";
             //opbouwen van de query
             //query met een parameter
             $query = 'select * from EHBO_gebruikers where mail=?';
@@ -235,7 +235,7 @@
                 mysqli_stmt_bind_param($statement, 's', $mailParam1);
                 $mailParam1 = $mail;
                 echo $mailParam1;
-                echo "parameter 1";
+               // echo "parameter 1";
 
 
                 mysqli_stmt_execute($statement);
