@@ -46,6 +46,8 @@ Authors: Tristan De Ben, Milan Van Wonterghem
 <?php
 session_destroy();
 session_start();
+
+
 if(isset($_POST['cmdSend'])) {
 //verbinding maken met de database
     include('Verbinding.php');
@@ -128,12 +130,24 @@ if(isset($_POST['cmdSend'])) {
 
         if ($Role == "gebruiker") {
             $_SESSION["Rol"] = "gebruiker";
-            header("location: Home_Gebruiker.php");
+            if($_SESSION["QRgescand"]=="ja")
+            {
+                header("location: overzichtklas.php");
+            }
+            else {
+                header("location: Home_Gebruiker.php");
+            }
         }
 
         if ($Role == "beheerder") {
             $_SESSION["Rol"] = "beheerder";
-            header("location: Home_Beheerder.php");
+            if($_SESSION["QRgescand"]=="ja")
+            {
+                header("location: overzichtklas.php");
+            }
+            else {
+                header("location: Home_Beheerder.php");
+            }
         }
     }
 
