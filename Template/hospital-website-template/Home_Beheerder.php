@@ -85,7 +85,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="OverzichtOntbreek.php" class="dropdown-item">Aanvullen</a>
+
                                 <a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
                                 <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>

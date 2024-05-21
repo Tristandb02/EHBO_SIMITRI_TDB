@@ -88,7 +88,7 @@
                             <div class="dropdown-menu m-0">
                                <?php
                                if ($_SESSION['rol'] == 'beheerder'){
-                                   echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Aanvullen</a>';
+
                                    echo'<a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>';
                                    echo'<a href="logboek.php" class="dropdown-item">Logboek</a>';
                                    echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
