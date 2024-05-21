@@ -297,12 +297,13 @@
     if(isset($_POST['btnSend']))
     {
         foreach($columnNames as $Item){
+            $Ontbreking .= "<br><br>Er ontbreken ".$Item." in de volgende lokalen: ";
          mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 0");
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
         while ($row = mysqli_fetch_assoc($res)) {
 
-            $Ontbrekend .= $row["lokaal"] . ", ";
+            $Ontbreking .= $row["lokaal"] . ", ";
         }
 
             mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 'Niet Aanwezig'");
@@ -313,7 +314,7 @@
                 $Ontbrekend .= $row["lokaal"] . ", ";
             }
 
-            $Ontbreking .= "Er ontbreken ".$Item." in de volgende lokalen: ".$Ontbrekend."<br><br>";
+
 
         }
         // mail sturen
