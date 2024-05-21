@@ -3,6 +3,7 @@ session_start();
 $gelukt="";
 if($gelukt=="ja")
 {
+
     header("location: OverzichtDoos.php");
     exit();
 }
@@ -169,7 +170,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
     echo "<style>
         table {
-            width: 100%;
+            width: 50%;
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 18px;
@@ -318,7 +319,6 @@ if(isset($_POST["btnAanpassen"]))
     {
         if(mysqli_stmt_execute($stmt))
         {
-            echo "gelukt";
 //INSERT INTO `db_ehbo`.`logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES ('1', 'datum', 'K123', '2');
             if(mysqli_stmt_prepare($stmt,"INSERT INTO `gtiictbeokcommon`.`EHBO_logboek` (`idLeerkracht`, `datum`, `lokaal`, `status`) VALUES (?, ?, ?, ?);"))
             {
