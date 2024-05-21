@@ -88,11 +88,11 @@
                             <div class="dropdown-menu m-0">
                                <?php
                                if ($_SESSION['rol'] == 'beheerder'){
-                                   echo'<a href="testimonial.php" class="dropdown-item">Aanvullen</a>';
+                                   echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Aanvullen</a>';
                                    echo'<a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>';
                                    echo'<a href="logboek.php" class="dropdown-item">Logboek</a>';
                                    echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
-                                   echo'<a href="testimonial.php" class="dropdown-item">Ontbrekende Items</a>';
+                                   echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>';
                                }
                                 echo '<a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
                                 echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
