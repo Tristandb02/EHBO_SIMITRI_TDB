@@ -311,7 +311,7 @@
             $res = mysqli_stmt_get_result($stmt);
             while ($row = mysqli_fetch_assoc($res)) {
 
-                $Ontbrekend .= $row["lokaal"] . ", ";
+                $Ontbreking .= $row["lokaal"] . ", ";
             }
 
 
@@ -334,7 +334,7 @@
     </head> 
     <body> 
         
-        <p>Ontbrekingen:<br>.$Ontbrekend</p>
+        <p>Ontbrekingen:<br>.$Ontbreking</p>
     </body>
     </html>";
 
