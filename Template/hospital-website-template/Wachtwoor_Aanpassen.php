@@ -180,7 +180,7 @@
     <table>
         <tr>
             <td>
-                <a href="https://www.gtibeveren.be"><img src="assets/images/logoBV.png" alt="" align="left"/></a>
+               <!-- <a href="https://www.gtibeveren.be"><img src="assets/images/logoBV.png" alt="" align="left"/></a>-->
             </td>
             <td width="80%">
                 <!--img src="images/cheese3.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;"/-->
@@ -211,12 +211,12 @@
     session_start();
 
     $mail = $_SESSION["Mail"];
-    echo $_SESSION["Mail"];
+    //echo $_SESSION["Mail"];
 
     if(isset($_POST['cmdSend'])) {
         //verbinding maken met de database
         include('Verbinding.php');
-        echo "button pushed";
+        //echo "button pushed";
 
         //als de berbinding gelukt is
         if ($link) {
@@ -224,7 +224,7 @@
             //opbouwen van de query
             //query met een parameter
             $query = 'select * from EHBO_gebruikers where mail=?';
-            echo $query . '<br>';
+            //echo $query . '<br>';
 
             //tatement initialiseren op basis van de query
             $statement = mysqli_stmt_init($link);

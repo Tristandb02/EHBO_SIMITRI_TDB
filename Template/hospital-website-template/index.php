@@ -53,7 +53,7 @@ if(isset($_POST['cmdSend'])) {
     include('Verbinding.php');
     $BasisWachtwoord = "Test123";
 
-//als de berbinding gelukt is
+//als de verbinding gelukt is
     if ($link) {
         //opbouwen van de query
         //query met een parameter
