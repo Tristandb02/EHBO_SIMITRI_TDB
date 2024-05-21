@@ -141,7 +141,7 @@ if(isset($_POST['cmdSend'])) {
 
         if ($Role == "beheerder") {
             $_SESSION["Rol"] = "beheerder";
-            if($_SESSION["QRgescand"]=="ja")
+            if($_SESSION["QRGescand"]=="ja")
             {
                 header("location: overzichtklas.php");
             }
