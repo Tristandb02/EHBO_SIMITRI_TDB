@@ -94,7 +94,7 @@
                                    echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
                                    echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>';
                                }
-                                echo '<a href="Wachtwoor_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
+                                echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
                                 echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
                                 ?>
                             </div>
