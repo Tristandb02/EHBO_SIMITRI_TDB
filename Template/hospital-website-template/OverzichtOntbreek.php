@@ -158,7 +158,6 @@
     //verbinding met database
     session_start();
     include 'Verbinding.php';
-    $Total = "";
     $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
           WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
@@ -197,7 +196,6 @@
         foreach($columnNames as $Item)
         {
                 $intLokalenOntbreek = 0;
-                $LokalenOntbreek = "";
 
                 if($Item!="handschoenen")
                 {
@@ -298,7 +296,27 @@
     $Total = $Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4;
     if(isset($_POST['btnSend']))
     {
-        echo $_SESSION['Ontbrekend'];
+        foreach($columnNames as $Item){
+            $Ontbreking .= "<br><br>Er ontbreken ".$Item." in de volgende lokalen: ";
+         mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 0");
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        while ($row = mysqli_fetch_assoc($res)) {
+
+            $Ontbreking .= $row["lokaal"] . ", ";
+        }
+
+            mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 'Niet Aanwezig'");
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+            while ($row = mysqli_fetch_assoc($res)) {
+
+                $Ontbreking .= $row["lokaal"] . ", ";
+            }
+
+
+
+        }
         // mail sturen
         //$to = $_POST['mail'];
         //echo 'mail';
@@ -316,7 +334,7 @@
     </head> 
     <body> 
         
-        <p>Ontbreekingen:<br>.$Total</p>
+        <p>Ontbrekingen:<br>.$Ontbreking</p>
     </body>
     </html>";
 
