@@ -92,6 +92,7 @@ if(isset($_POST['btnSend']))
     // mail sturen
     //$to = $_POST['mail'];
     //echo 'mail';
+    echo $_SESSION['Ontbrekend'];
     $testName = 'tristand101006@student.gtibeveren.be';
     $to = $testName; //extra ontvanger toevoegen $_POST['mail'].','.
     $from = 'tristand101006@student.gtibeveren.be';
@@ -106,7 +107,7 @@ if(isset($_POST['btnSend']))
     </head> 
     <body> 
         
-        <p>inschrijving van '.$_SESSION["Ontbrekend"].'</p>
+        <p>Ontrbrekend: <br><br> '.$_SESSION["Ontbrekend"].'</p>
     </body> 
     </html>';
 
