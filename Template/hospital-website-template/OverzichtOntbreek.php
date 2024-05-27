@@ -306,7 +306,7 @@
             $Ontbreking .= $row["lokaal"] . ", ";
         }
 
-            mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 'Niet Aanwezig'");
+            mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 'Niet aanwezig'");
             mysqli_stmt_execute($stmt);
             $res = mysqli_stmt_get_result($stmt);
             while ($row = mysqli_fetch_assoc($res)) {
