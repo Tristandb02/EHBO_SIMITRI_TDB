@@ -94,13 +94,32 @@ if(isset($_POST["btnNaarKlassen"]))
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="Home_Gebruiker.php" class="nav-item nav-link">Home</a>
+                    <?php
+                    session_start();
+                    if ($_SESSION['Rol'] == 'beheerder'){
+                        echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                    }
+                    else {
+                        echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                    }
+
+                    ?>
                     <a href="OverzichtKlas.php" class="nav-item nav-link active">Klassen     overzicht</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                         <div class="dropdown-menu m-0">
-                            <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord aanpassen</a>
-                            <a href="detail.php" class="dropdown-item">Afmelden</a>
+                            <?php
+                            session_start();
+                            if ($_SESSION['Rol'] == 'beheerder'){
+
+                                echo'<a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>';
+                                echo'<a href="logboek.php" class="dropdown-item">Logboek</a>';
+                                echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
+                                echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>';
+                            }
+                            echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
+                            echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -328,13 +347,14 @@ if(isset($_POST["btnAanpassen"]))
                 $status= "Inhoud doos aangepast (".$aangepast.")";
 
                 mysqli_stmt_bind_param($stmt, 'isss',$_SESSION["id"],$date,$_SESSION["klas"],$status);
+
                  if(mysqli_stmt_execute($stmt))
                  {
-                     echo "logboek toegevoegd";
+                     //echo "logboek toegevoegd";
                  }
                  else
                  {
-                     echo "logboek niet toegevoegd";
+                     //echo "logboek niet toegevoegd";
                  }
             }
 
