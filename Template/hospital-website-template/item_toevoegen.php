@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,24 +80,41 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="Home_Beheerder.php" class="nav-item nav-link">Home</a>
-                        <a href="Gebruiker_toevoegen.php" class="nav-item nav-link">About</a>
-                        <a href="service.php" class="nav-item nav-link">Service</a>
-                        <a href="logboek.php" class="nav-item nav-link">Pricing</a>
+
+                        <?php
+                        session_start();
+                        if ($_SESSION['Rol'] == 'beheerder'){
+                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                        }
+                        else {
+                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                        }
+
+                        ?>
+
+                        <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.php" class="dropdown-item">Blog Detail</a>
-                                <a href="Gebruikers.php" class="dropdown-item">The Team</a>
-                                <a href="OverzichtOntbreek.php" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.php" class="dropdown-item">Appointment</a>
-                                <a href="search.php" class="dropdown-item">Search</a>
+
+                                <?php
+                                session_start();
+                                if ($_SESSION['Rol'] == 'beheerder'){
+
+                                    echo'<a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>';
+                                    echo'<a href="logboek.php" class="dropdown-item">Logboek</a>';
+                                    echo'<a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>';
+                                    echo '<a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>';
+                                }
+                                echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>';
+                                echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
+                                ?>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+
+
                     </div>
-                </div>
             </nav>
         </div>
     </div>
