@@ -91,7 +91,7 @@
 
                         ?>
 
-                        <a href="service.php" class="nav-item nav-link">Klassen overzicht</a>
+                        <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
