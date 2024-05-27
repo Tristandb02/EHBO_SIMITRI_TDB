@@ -356,7 +356,7 @@
         $Total = $Ontbreek1 . "<br>" . $Ontbreek2 . "<br>" . $Ontbreek3 . "<br>" . $Ontbreek4;
 
 if (isset($_POST['btnSend'])) {
-    $Ontbreking = ''; // Initialiseer de variabele
+    /*$Ontbreking = ''; // Initialiseer de variabele
 
     foreach ($columnNames as $Item) {
         $Ontbreking .= "<br><br>Er ontbreken " . $Item . " in de volgende lokalen: ";
@@ -382,6 +382,66 @@ if (isset($_POST['btnSend'])) {
 
         // Resultaatset vrijgeven
         mysqli_free_result($res);
+    }*/
+    foreach ($columnNames as $Item) {
+        $intLokalenOntbreek = 0;
+
+        if($Item!="handschoenen")
+        {
+            if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$Item." = 'Niet Aanwezig'"))
+            {
+                mysqli_stmt_execute($stmt);
+                $res = mysqli_stmt_get_result($stmt);
+                while ($row=mysqli_fetch_assoc($res))
+                {
+                    $intLokalenOntbreek++;
+                    $LokalenOntbreek.=$row["lokaal"].", ";
+
+                }
+
+                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                if ($intLokalenOntbreek != 0)
+                {
+                    $Ontbreek1 = "Er ontbreken ".$intLokalenOntbreek." ".$Item."  in de volgende lokalen: ".$LokalenOntbreek;
+                    $_SESSION['Ontbrekend'] .= $Ontbreek1;
+                    echo "$Ontbreek1 <br><br>";
+                }
+
+
+
+            }
+        }
+        else {
+            if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $Item . " = 1")) {
+                mysqli_stmt_execute($stmt);
+                $res = mysqli_stmt_get_result($stmt);
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $intLokalenOntbreek++;
+                    $LokalenOntbreek .= $row["lokaal"] . ", ";
+
+                }
+
+                $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                if ($intLokalenOntbreek != 0) {
+                    $Ontbreek2 = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $Item . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                    $Total .= "<br>".$Ontbreek2;
+                    $_SESSION['Ontbrekend'] .= $Ontbreek2;
+                    echo "$Ontbreek2 <br><br>";
+                }
+
+            }
+        }
+        $Message = "";
+        if($Ontbreek2 =! "")
+        {
+            $Message .= $Ontbreek2."<br><br>";
+        }
+        if($Ontbreek1 =! "")
+        {
+            $Message .= $Ontbreek1."<br><br>";
+        }
+
+
     }
 
     // Mail versturen
@@ -397,7 +457,7 @@ if (isset($_POST['btnSend'])) {
         <title>Ontbreken EHBO doosjes</title> 
     </head> 
     <body> 
-        <p>Ontbrekingen:<br>{$Ontbreking}</p>
+        <p>Ontbrekingen:<br>$Message</p>
     </body>
     </html>";
 
