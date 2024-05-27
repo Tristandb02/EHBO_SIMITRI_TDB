@@ -81,7 +81,9 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <?php
-                        if ($_SESSION['rol'] == 'beheerder'){
+                        session_start();
+
+                        if ($_SESSION['Rol'] == 'beheerder'){
                             echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
                         }
                         else {
