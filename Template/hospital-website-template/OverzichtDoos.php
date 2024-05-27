@@ -100,7 +100,7 @@ if(isset($_POST["btnNaarKlassen"]))
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
                         <div class="dropdown-menu m-0">
                             <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord aanpassen</a>
-                            <a href="detail.php" class="dropdown-item">Afmelden</a>
+                            <a href="index.php" class="dropdown-item">Afmelden</a>
                         </div>
                     </div>
                 </div>
@@ -328,13 +328,14 @@ if(isset($_POST["btnAanpassen"]))
                 $status= "Inhoud doos aangepast (".$aangepast.")";
 
                 mysqli_stmt_bind_param($stmt, 'isss',$_SESSION["id"],$date,$_SESSION["klas"],$status);
+
                  if(mysqli_stmt_execute($stmt))
                  {
-                     echo "logboek toegevoegd";
+                     //echo "logboek toegevoegd";
                  }
                  else
                  {
-                     echo "logboek niet toegevoegd";
+                     //echo "logboek niet toegevoegd";
                  }
             }
 
