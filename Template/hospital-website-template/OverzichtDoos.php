@@ -1,12 +1,16 @@
 <?php
 session_start();
-$gelukt="";
-if($gelukt=="ja")
+if(isset($_POST["btnPagToev"]))
 {
-
-    header("location: OverzichtDoos.php");
+    header("Location: items_toevoegen.php");
     exit();
 }
+if(isset($_POST["btnNaarKlassen"]))
+{
+    header("location: OverzichtKlas.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -152,8 +156,6 @@ if (mysqli_stmt_prepare($stmt, $data_query)) {
 }
 
 
-
-
 // Query to get column names from the table
 $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
@@ -170,7 +172,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
     echo "<style>
         table {
-            width: 50%;
+            width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 18px;
@@ -244,7 +246,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                         echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
                         break;
                     case "handschoenen":
-                        echo "<td>Aantal:<input type='number' style='width: 40px' name='" . $columnName . "'></td>";
+                        echo "<td>Aantal:<input type='number' min='0' style='width: 40px' name='" . $columnName . "'></td>";
                         break;
                     default:
                         echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
@@ -258,7 +260,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
         echo "</table>";
 
-        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'";
+        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'>";
 
 
 
@@ -335,7 +337,11 @@ if(isset($_POST["btnAanpassen"]))
                      echo "logboek niet toegevoegd";
                  }
             }
+
+            echo("<meta http-equiv='refresh' content='0'>");
             $gelukt="ja";
+
+
 
 
 
@@ -348,14 +354,7 @@ if(isset($_POST["btnAanpassen"]))
         }
     }
 }
-if(isset($_POST["btnPagToev"]))
-{
-    header("Location: items_toevoegen.php");
-}
-if(isset($_POST["btnNaarKlassen"]))
-{
-    header("location: overzichtKlas.php");
-}
+
 // Close connection
 mysqli_close($link);
 ?>
@@ -586,4 +585,4 @@ mysqli_close($link);
 <script src="js/main.js"></script>
 </body>
 
-</html><?php
+</html>
