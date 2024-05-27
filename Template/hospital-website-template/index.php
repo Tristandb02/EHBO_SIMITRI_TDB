@@ -154,10 +154,10 @@ if(isset($_POST['cmdSend'])) {
                     if (password_verify($_POST['password'], $row['wachtwoord'])){
 
                         $Role = $row['rol'];
+                        $_SESSION["Mail"] = $_POST["username"];
                         echo $Role;
                         if (password_verify($BasisWachtwoord, $row['wachtwoord']))
                         {
-                            $_SESSION["Mail"] = $_POST["username"];
                             header("location: Wachtwoord_Aanpassen.php");
                         }
 
