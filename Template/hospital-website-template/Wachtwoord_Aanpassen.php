@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,7 +202,7 @@
     </table>
     <form method="post">
 
-            <h1>Login</h1>
+            <h1>Wachtwoord aanpassen</h1>
 
 
             <input type="password" name="OudWW" placeholder="Oud Wachtwoord" id="username" required><!-- input textbox voor de email -->
@@ -277,7 +278,9 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
-                                header("location: index.php");
+                                echo "<h3>Wachtwoord werd aangepast</h3>";
+
+
 
                             } else
                             {
