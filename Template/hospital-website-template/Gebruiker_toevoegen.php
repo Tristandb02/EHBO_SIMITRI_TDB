@@ -79,7 +79,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+
+                        <?php
+                        if ($_SESSION['rol'] == 'beheerder'){
+                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                        }
+                        else {
+                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                        }
+
+                        ?>
+
                         <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
 
                         <div class="nav-item dropdown">
