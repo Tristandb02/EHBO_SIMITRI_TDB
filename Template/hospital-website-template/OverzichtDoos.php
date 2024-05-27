@@ -1,12 +1,6 @@
 <?php
 session_start();
-$gelukt="";
-if($gelukt=="ja")
-{
 
-    header("location: OverzichtDoos.php");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -152,8 +146,6 @@ if (mysqli_stmt_prepare($stmt, $data_query)) {
 }
 
 
-
-
 // Query to get column names from the table
 $query = "SELECT COLUMN_NAME 
           FROM INFORMATION_SCHEMA.COLUMNS 
@@ -170,7 +162,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
     echo "<style>
         table {
-            width: 50%;
+            width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 18px;
@@ -258,7 +250,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
         echo "</table>";
 
-        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'";
+        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'>";
 
 
 
@@ -335,7 +327,10 @@ if(isset($_POST["btnAanpassen"]))
                      echo "logboek niet toegevoegd";
                  }
             }
+            header("Location: OverzichtDoos.php");
             $gelukt="ja";
+
+
 
 
 
@@ -354,7 +349,7 @@ if(isset($_POST["btnPagToev"]))
 }
 if(isset($_POST["btnNaarKlassen"]))
 {
-    header("location: overzichtKlas.php");
+    header("location: OverzichtKlas.php");
 }
 // Close connection
 mysqli_close($link);
@@ -586,4 +581,4 @@ mysqli_close($link);
 <script src="js/main.js"></script>
 </body>
 
-</html><?php
+</html>
