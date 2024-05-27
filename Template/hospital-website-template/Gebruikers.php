@@ -164,12 +164,12 @@
     if (isset($_POST['btnVerwijder'])) {
         // Controleer of de gebruikerid is ingesteld
         // Voorbereiden en uitvoeren van de verwijderingsquery
-        $query = "DELETE FROM db_ehbo.gebruikers WHERE gebruikerid = ?";
+        $query = "DELETE FROM EHBO_gebruikers WHERE gebruikerid = ?";
         $statement = mysqli_prepare($link, $query);
         mysqli_stmt_bind_param($statement, 'i', $_POST['btnVerwijder']);
         if (mysqli_stmt_execute($statement)) {
             // Als verwijdering succesvol is, geef dan een succesbericht weer
-            echo 'Gebruiker is verwijderd';
+            //echo 'Gebruiker is verwijderd';
         } else {
             // Als er een fout optreedt, geef dan een foutmelding weer
             echo 'Verwijderen is mislukt: ' . mysqli_stmt_error($statement);
