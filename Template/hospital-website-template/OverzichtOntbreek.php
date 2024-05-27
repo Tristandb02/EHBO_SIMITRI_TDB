@@ -293,7 +293,7 @@
 
         }
     }
-    $Total = $Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4;
+    /*$Total = $Ontbreek1."<br>".$Ontbreek2."<br>".$Ontbreek3."<br>".$Ontbreek4;
     if(isset($_POST['btnSend']))
     {
         foreach($columnNames as $Item){
@@ -352,11 +352,76 @@
             echo 'ok';
         }else{
             echo 'Email sending failed.';
+        }*/
+        $Total = $Ontbreek1 . "<br>" . $Ontbreek2 . "<br>" . $Ontbreek3 . "<br>" . $Ontbreek4;
+
+if (isset($_POST['btnSend'])) {
+    $Ontbreking = ''; // Initialiseer de variabele
+
+    foreach ($columnNames as $Item) {
+        $Ontbreking .= "<br><br>Er ontbreken " . $Item . " in de volgende lokalen: ";
+
+        mysqli_stmt_prepare($stmt, "SELECT lokaal FROM EHBO_dozen WHERE " . $Item . " = 0");
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            $Ontbreking .= $row["lokaal"] . ", ";
         }
+
+        // Resultaatset vrijgeven
+        mysqli_free_result($res);
+
+        mysqli_stmt_prepare($stmt, "SELECT lokaal FROM EHBO_dozen WHERE " . $Item . " = 'Niet aanwezig'");
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            $Ontbreking .= $row["lokaal"] . ", ";
+        }
+
+        // Resultaatset vrijgeven
+        mysqli_free_result($res);
     }
+
+    // Mail versturen
+    $to = 'tristand101006@student.gtibeveren.be'; // Extra ontvanger toevoegen via $_POST['mail'] indien nodig
+    $from = 'tristand101006@student.gtibeveren.be';
+    $fromName = 'GTI - EHBO';
+
+    $subject = "Ontbrekende in EHBO doosjes";
+
+    $htmlContent = "
+    <html> 
+    <head> 
+        <title>Ontbreken EHBO doosjes</title> 
+    </head> 
+    <body> 
+        <p>Ontbrekingen:<br>{$Ontbreking}</p>
+    </body>
+    </html>";
+
+    // Set content-type header for sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+    // Additional headers
+    $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
+    $headers .= 'Cc: tristand101006@student.gtibeveren.be' . "\r\n";
+
+    // Send email
+    if (mail($to, $subject, $htmlContent, $headers)) {
+        echo 'ok';
+    } else {
+        echo 'Email sending failed.';
+    }
+
+
+
     if(isset($_POST["btnTerug"]))
     {
         header("Location: Home_Beheerder.php");
+    }
     }
 
     ?>
