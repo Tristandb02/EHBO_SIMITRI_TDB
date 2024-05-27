@@ -1,5 +1,15 @@
 <?php
 session_start();
+if(isset($_POST["btnPagToev"]))
+{
+    header("Location: items_toevoegen.php");
+    exit();
+}
+if(isset($_POST["btnNaarKlassen"]))
+{
+    header("location: OverzichtKlas.php");
+    exit();
+}
 
 ?>
 
@@ -236,7 +246,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
                         echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
                         break;
                     case "handschoenen":
-                        echo "<td>Aantal:<input type='number' style='width: 40px' name='" . $columnName . "'></td>";
+                        echo "<td>Aantal:<input type='number' min='0' style='width: 40px' name='" . $columnName . "'></td>";
                         break;
                     default:
                         echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
@@ -327,7 +337,8 @@ if(isset($_POST["btnAanpassen"]))
                      echo "logboek niet toegevoegd";
                  }
             }
-            header("Location: OverzichtDoos.php");
+
+            echo("<meta http-equiv='refresh' content='0'>");
             $gelukt="ja";
 
 
@@ -343,14 +354,7 @@ if(isset($_POST["btnAanpassen"]))
         }
     }
 }
-if(isset($_POST["btnPagToev"]))
-{
-    header("Location: items_toevoegen.php");
-}
-if(isset($_POST["btnNaarKlassen"]))
-{
-    header("location: OverzichtKlas.php");
-}
+
 // Close connection
 mysqli_close($link);
 ?>
