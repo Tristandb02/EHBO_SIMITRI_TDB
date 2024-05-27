@@ -327,6 +327,7 @@ if(isset($_POST["btnAanpassen"]))
                      echo "logboek niet toegevoegd";
                  }
             }
+            header("Location: OverzichtDoos.php");
             $gelukt="ja";
 
 
