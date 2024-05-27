@@ -245,8 +245,8 @@
 
                 mysqli_stmt_bind_param($statement, 's', $mailParam1);
                 $mailParam1 = $mail;
-                echo $mailParam1;
-               // echo "parameter 1";
+                //echo $mailParam1;
+                //echo "parameter 1";
 
 
                 mysqli_stmt_execute($statement);
@@ -260,13 +260,12 @@
                     if ($row != null)
                     {
 
-
                         if ($_POST["OudWW"] != $_POST["NieuwWW"])
                         {
                             if ($_POST["NieuwWW"] == $_POST["HerhaalWW"])
                             {
                                 $WWhash = password_hash($_POST["NieuwWW"], PASSWORD_DEFAULT);
-                                $query1 = 'update gebruikers set wachtwoord = ? where mail = ?';
+                                $query1 = 'update EHBO_gebruikers set wachtwoord = ? where mail = ?';
 
                                 $statement1 = mysqli_stmt_init($link);
 

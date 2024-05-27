@@ -4,6 +4,73 @@ Authors: Tristan De Ben, Milan Van Wonterghem
 <html>
 <head>
     <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .login {
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .login h1 {
+            margin-bottom: 20px;
+        }
+        .login label {
+            text-align: left;
+        }
+        .login h3 {
+            margin-top: 20px;
+        }
+        p {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
@@ -87,10 +154,10 @@ if(isset($_POST['cmdSend'])) {
                     if (password_verify($_POST['password'], $row['wachtwoord'])){
 
                         $Role = $row['rol'];
+                        $_SESSION["Mail"] = $_POST["username"];
                         echo $Role;
                         if (password_verify($BasisWachtwoord, $row['wachtwoord']))
                         {
-                            $_SESSION["Mail"] = $_POST["username"];
                             header("location: Wachtwoord_Aanpassen.php");
                         }
 
