@@ -94,7 +94,7 @@
                                 <a href="search.html" class="dropdown-item active">Search</a>
                             </div>
                         </div>
-                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <a href="item_toevoegen.php" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
