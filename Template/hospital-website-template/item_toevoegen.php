@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MEDINOVA - Hospital Website Template</title>
+    <title>EHBO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -32,48 +32,15 @@
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>+012 345 6789</a>
-                        <span class="text-body">|</span>
-                        <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>info@example.com</a>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="text-body ps-2" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
+
 
 
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="Home_Beheerder.php" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Medinova</h1>
+                <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary">EHBO</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -84,10 +51,10 @@
                         <?php
                         session_start();
                         if ($_SESSION['Rol'] == 'beheerder'){
-                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link ">Home</a>';
                         }
                         else {
-                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link ">Home</a>';
                         }
 
                         ?>
@@ -121,144 +88,235 @@
     <!-- Navbar End -->
 
 
-    <!-- Contact Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Any Questions?</h5>
-                <h1 class="display-4">Please Feel Free To Contact Us</h1>
-            </div>
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">123 Street, New York, USA</h6>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">+012 345 6789</h6>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
-                            <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
-                        </div>
-                        <h6 class="mb-0">info@example.com</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12" style="height: 500px;">
-                    <div class="position-relative h-100">
-                        <iframe class="position-relative w-100 h-100"
-                            src="https://www.google.com/maps/place/GTI+Beveren/@51.2189279,4.2497443,16z/data=!3m1!4b1!4m6!3m5!1s0x47c38b2563ba2edb:0x4b4e879cf17d5995!8m2!3d51.2189246!4d4.2523192!16s%2Fg%2F1tlw872h?entry=ttu"
-                            frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                            tabindex="0"></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
-                <div class="col-lg-8">
-                    <div class="bg-white rounded p-5 m-5 mb-0">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
+    <!--hier door doet de navbar raar door (width: 80%; en padding: 20px;)dit stond bij de body -->
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+        <title>Login</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0 auto;
+
+            }
+            h1 {
+                text-align: center;
+            }
+            form {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="password"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            .login {
+                text-align: center;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                padding: 20px;
+                margin-top: 50px;
+            }
+            .login h1 {
+                margin-bottom: 20px;
+            }
+            .login label {
+                text-align: left;
+            }
+            .login h3 {
+                margin-top: 20px;
+            }
+            p {
+                margin-top: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+    <table>
+        <tr>
+            <td>
+                <!-- <a href="https://www.gtibeveren.be"><img src="assets/images/logoBV.png" alt="" align="left"/></a>-->
+            </td>
+            <td width="80%">
+                <!--img src="images/cheese3.jpg" alt="" style="display: block; margin-left: auto; margin-right: auto;"/-->
+            </td>
+
+        </tr>
+    </table>
+    <form method="post">
+
+        <h1>Item toevoegen</h1>
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
-                    <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor</p>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Quick Links</h4>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Popular Links</h4>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Newsletter</h4>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
-                            <button class="btn btn-primary">Sign Up</button>
-                        </div>
-                    </form>
-                    <h6 class="text-primary text-uppercase mt-4 mb-3">Follow Us</h6>
-                    <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-primary" href="#">Your Site Name</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+        <input type="text" name="item" placeholder="Naam item" id="username" required><!-- input textbox voor de email -->
+
+        <input type="submit" value="Toevoegen" Name="cmdSend">
+
+        <form method="post" action="OverzichtDoos.php">
+        <label>Kies een bestaande categorie:</label>
+        <select name="BestaandeCategorie" id="BestaandeCategorie">
+
+        <input type="submit" value="Voeg toe" Name="cmdToe">
+
+
+
+    </form>
+
+    </body>
+    </html>
+
+    <?php
+    session_start();
+
+
+    include('Verbinding.php');
+
+    if($link) {
+        $query2 = "SELECT COLUMN_NAME 
+              FROM INFORMATION_SCHEMA.COLUMNS 
+              WHERE TABLE_SCHEMA = 'gtiictbeokcommen' 
+              AND TABLE_NAME = 'EHBO_dozen'";
+
+        $statement = mysqli_stmt_init($link);
+
+        if (mysqli_stmt_prepare($statement, $query2)) {
+            mysqli_stmt_execute($statement);
+            $Result = mysqli_stmt_get_result($statement);
+
+
+            $skipCounter = 0;
+            while ($row = mysqli_fetch_assoc($Result)) {
+                if ($skipCounter >= 7) {
+                    // Skip the first two rows
+
+                    echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
+                }
+                else
+                {
+                    $skipCounter++;
+                }
+
+            }
+            echo '</select>';
+
+            echo '</form>';
+        }
+        if(isset($_POST['cmdSend']))
+        {
+            $query = "UPDATE `gtiictbeokcommen`.`EHBO_dozen` SET `?` = 'Aanwezig' WHERE (`doosid` = '?')";
+
+            //4b: prepared statement maken op basis van de query en het statement
+            if (mysqli_stmt_prepare($statement, $query)) {
+                //4c: parameter een waarde geven (= vraagteken vervangen)
+                mysqli_stmt_bind_param($statement, 'si',  $_POST['BestaandeCategorie'], $Id );
+
+                $Id = $_SESSION["DoosID"];
+                mysqli_stmt_execute($statement);
+
+
+
+
+
+            }
+
+            else
+            {
+                echo mysqli_stmt_error($statement);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+    if(isset($_POST['cmdToe'])) {
+
+
+//1: verbinding maken met de database
+
+
+//2: als de verbinding gelukt is
+        if ($link) {
+            //3: opbouw van de query
+            //query met een parameters
+            $Item = $_POST['Naam'];
+            $query = 'ALTER TABLE `gtiictbeokcommen`.`EHBO_dozen` ADD COLUMN '.$Item.' VARCHAR(255)';
+            $query1= 'update `gtiictbeokcommen`.`EHBO_dozen`  set '.$Item." = 'Aanwezig' WHERE (`doosid` = ?)";
+
+
+            //4a: statement initialiseren op basis van de link
+            $statement = mysqli_stmt_init($link);
+            if (mysqli_stmt_prepare($statement, $query))
+            {
+                if (mysqli_stmt_execute($statement))
+                {
+                    echo 'kolom toegoevoegd ';
+                    //echo '<form action="OverzichtDoos.php">';
+
+
+                }
+                else{
+                    echo 'kolom niet toegevoegd'.mysqli_stmt_error($statement);
+                }
+            }
+
+            //4b: prepared statement maken op basis van de query en het statement
+            if (mysqli_stmt_prepare($statement, $query1)) {
+                //4c: parameter een waarde geven (= vraagteken vervangen)
+                mysqli_stmt_bind_param($statement, 'i', $Id);
+
+                $Id = $_SESSION["DoosID"];
+                mysqli_stmt_execute($statement);
+
+
+
+
+
+            }
+
+            else
+            {
+                echo mysqli_stmt_error($statement);
+            }
+
+
+            //6: verbining sluiten
+            mysqli_close($link);
+        } else {
+            echo '<br> verbining niet gelukt ' . mysqli_connect_error();
+        }
+
+    }
+    ?>
+
+
 
 
     <!-- Back to Top -->
