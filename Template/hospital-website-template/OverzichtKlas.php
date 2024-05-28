@@ -351,6 +351,32 @@ if (isset($_POST["klaslink"])) {
 </html>
 <?php
 echo "<form method='post'><table style='width: 40%; height: 40%' border='1'>";
+echo "<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        input[type=radio], input[type=number] {
+            margin-top: 5px;
+        }
+    </style>";
 for($i=1; $i<=3; $i++) {
     echo "<tr>";
     for($i2=8; $i2<=23; $i2++) {

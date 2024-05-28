@@ -108,7 +108,6 @@
                                 }
                                 echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord Aanpassen</a>';
                                 echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
-
                                 ?>
                             </div>
                         </div>
