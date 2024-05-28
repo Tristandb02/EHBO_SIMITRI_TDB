@@ -337,7 +337,6 @@ if(isset($_POST["btnTerug"]))
 
         // Additional headers
         $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
-        $headers .= 'Cc: '. $_SESSION["MAIL"] . "\r\n";
 
         // Send email
         if (mail($to, $subject, $htmlContent, $headers)) {
