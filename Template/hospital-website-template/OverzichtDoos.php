@@ -64,10 +64,10 @@ if(isset($_POST["btnNaarKlassen"]))
                     <?php
                     session_start();
                     if ($_SESSION['Rol'] == 'beheerder'){
-                        echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                        echo '<a href="Home_Beheerder.php" class="nav-item nav-link ">Home</a>';
                     }
                     else {
-                        echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                        echo '<a href="Home_Gebruiker.php" class="nav-item nav-link ">Home</a>';
                     }
 
                     ?>
