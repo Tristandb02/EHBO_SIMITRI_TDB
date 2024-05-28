@@ -178,16 +178,16 @@ $query = "SELECT COLUMN_NAME
           FROM INFORMATION_SCHEMA.COLUMNS 
           WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
           AND TABLE_NAME = 'EHBO_dozen'
-          LIMIT 2, 999"; // Skipping the first two columns
+          LIMIT 2, 999"; // Skip de eerste 2 kolommen
 
 $stmt = mysqli_stmt_init($link);
-$columnNames = array(); // Initialize an array to store column names
+$columnNames = array(); // Declareer de array columnNames
 
 if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
 
-    echo "<table border='1'>";
+    echo "<table border='1'>"; //tabel aanmaken
     echo "<tr>";
     echo "<html>
 <form method='post'>
@@ -204,11 +204,11 @@ echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
 
 $LokalenOntbreek="";
 $intLokalenOntbreek=0;
-$Message = "";
+
 
 if(isset($_POST["Item"]))
 {
-    if($_POST["Item"]!="handschoenen")
+    if($_POST["Item"]!="handschoenen") //Handschoenen zin met waardes niet met aan of afweizg
     {
         if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$_POST["Item"]." = 'Niet Aanwezig'"))
         {
@@ -227,12 +227,12 @@ if(isset($_POST["Item"]))
                 $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
                 $_SESSION['Ontbrekend'] = $Ontbreek;
                 echo "$Ontbreek";
-                $Message .= $Ontbreek."<br><br>";
+
             }
             else
             {
                 echo "Er ontbreken geen ".$_POST["Item"];
-                $Message .= "Er ontbreken geen ". $_POST["Item"];
+
             }
 
         }
@@ -253,10 +253,10 @@ if(isset($_POST["Item"]))
                 $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
                 $_SESSION['Ontbrekend'] = $Ontbreek;
                 echo "$Ontbreek";
-                $Message .= $Ontbreek."<br><br>";
+
             } else {
                 echo "Er ontbreken geen " . $_POST["Item"];
-                $Message .= "Er ontbreken geen ".$_POST["Item"];
+
             }
 
         }
@@ -282,6 +282,8 @@ if(isset($_POST["btnTerug"]))
             $res = mysqli_stmt_get_result($stmt);
 
             while ($row = mysqli_fetch_assoc($res)) {
+                $intLokalenOntbreek = 0;
+                $LokalenOntbreek = "";
 
 
                 if($row['COLUMN_NAME']!="handschoenen")
@@ -289,11 +291,11 @@ if(isset($_POST["btnTerug"]))
                     if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$row['COLUMN_NAME']." = 'Niet Aanwezig'"))
                     {
                         mysqli_stmt_execute($stmt);
-                        $res = mysqli_stmt_get_result($stmt);
-                        while ($row=mysqli_fetch_assoc($res))
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($Row=mysqli_fetch_assoc($result))
                         {
                             $intLokalenOntbreek++;
-                            $LokalenOntbreek.=$row["lokaal"].", ";
+                            $LokalenOntbreek.=$Row["lokaal"].", ";
 
                         }
 
@@ -304,6 +306,8 @@ if(isset($_POST["btnTerug"]))
                             $_SESSION['Ontbrekend'] = $Ontbreek;
                             echo "$Ontbreek";
                             $Message .= $Ontbreek."<br><br>";
+                            $intLokalenOntbreek = 0;
+                            $LokalenOntbreek = "";
                         }
                         else
                         {
@@ -317,10 +321,10 @@ if(isset($_POST["btnTerug"]))
                 else {
                     if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $row['COLUMN_NAME'] . " = 1")) {
                         mysqli_stmt_execute($stmt);
-                        $res = mysqli_stmt_get_result($stmt);
-                        while ($row = mysqli_fetch_assoc($res)) {
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($Row = mysqli_fetch_assoc($result)) {
                             $intLokalenOntbreek++;
-                            $LokalenOntbreek .= $row["lokaal"] . ", ";
+                            $LokalenOntbreek .= $Row["lokaal"] . ", ";
 
                         }
 
@@ -330,6 +334,8 @@ if(isset($_POST["btnTerug"]))
                             $_SESSION['Ontbrekend'] = $Ontbreek;
                             echo "$Ontbreek";
                             $Message .= $Ontbreek."<br><br>";
+                            $intLokalenOntbreek = 0;
+                            $LokalenOntbreek = "";
                         } else {
                             echo "Er ontbreken geen " . $row['COLUMN_NAME'];
                             $Message .= "Er ontbreken geen ".$row['COLUMN_NAME'];
