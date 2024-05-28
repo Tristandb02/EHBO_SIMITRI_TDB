@@ -50,7 +50,7 @@
                         <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
 
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagina's</a>
                             <div class="dropdown-menu m-0">
 
                                 <a href="Gebruiker_toevoegen.php" class="dropdown-item">Gebruiker aanmaken</a>
