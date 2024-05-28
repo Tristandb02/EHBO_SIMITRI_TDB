@@ -315,12 +315,12 @@ if(isset($_POST["btnTerug"]))
         }
 
 
-        $to = $_SESSION['Mail']; // Extra ontvanger toevoegen via $_POST['mail'] indien nodig
-        $from = 'EHBO.gtibeveren.be';
-        $fromName = 'GTI - EHBO';
+        $to = $_SESSION['Mail']; //ontvanger
+        $from = 'EHBO.gtibeveren.be'; //Verzender
+        $fromName = 'GTI - EHBO'; //Naam verzender
 
         $subject = "Ontbrekende in EHBO doosjes";
-
+        //Bericht
         $htmlContent = "
     <html> 
     <head> 
@@ -331,14 +331,13 @@ if(isset($_POST["btnTerug"]))
     </body>
     </html>";
 
-        // Set content-type header for sending HTML email
+        // Header voor de mail
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        // Additional headers
         $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
 
-        // Send email
+        // Verstuur mail
         if (mail($to, $subject, $htmlContent, $headers)) {
             echo 'ok';
         } else {
