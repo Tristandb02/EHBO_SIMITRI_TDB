@@ -57,7 +57,7 @@
                                 <a href="logboek.php" class="dropdown-item">Logboek</a>
                                 <a href="Gebruikers.php" class="dropdown-item">Lijst gebruiker</a>
                                 <a href="OverzichtOntbreek.php" class="dropdown-item">Ontbrekende Items</a>
-                                <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoor Aanpassen</a>
+                                <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord Aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
                             </div>
                         </div>
