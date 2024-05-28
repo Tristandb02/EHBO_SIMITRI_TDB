@@ -134,9 +134,9 @@ echo "<style>
             margin-top: 5px;
         }
     </style>"; // CSS-stijlen voor de tabel
-for($i=1; $i<=3; $i++) { // Loop om rijen te genereren
+for($i=1; $i<=3; $i++) { // Loop om rijen te genereren (Verdiep 1,2,3)
     echo "<tr>";
-    for($i2=8; $i2<=23; $i2++) { // Loop om kolommen te genereren
+    for($i2=8; $i2<=23; $i2++) { // Loop om kolommen te genereren (lokalen 8->23)
         $klas = "K$i"; // Bouw de klasnaam
         if($i2 < 10) {
             $klas .= "0"; // Voeg een 0 toe voor enkelcijferige getallen
