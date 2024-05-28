@@ -74,7 +74,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="https://www.beveren.be/nl/scholen/gti-beveren"  class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><img src="img/gtiBeveren1.png"></h1>
+                    <h1 class="m-0 text-uppercase text-primary">EHBO</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -85,10 +85,10 @@
                         session_start();
 
                         if ($_SESSION['Rol'] == 'beheerder'){
-                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link ">Home</a>';
                         }
                         else {
-                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link ">Home</a>';
                         }
 
                         ?>
