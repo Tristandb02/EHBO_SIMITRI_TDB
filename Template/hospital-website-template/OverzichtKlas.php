@@ -67,7 +67,7 @@ if (isset($_POST["klaslink"])) { // Controleer of een knop is ingedrukt
                     ?>
                     <a href="OverzichtKlas.php" class="nav-item nav-link active">Klassen overzicht</a> <!-- Link naar het klassenoverzicht -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a> <!-- Dropdown voor profielopties -->
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagina's</a> <!-- Dropdown voor profielopties -->
                         <div class="dropdown-menu m-0">
                             <?php
                             session_start(); // Start de sessie

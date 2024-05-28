@@ -73,7 +73,7 @@ if(isset($_POST["btnNaarKlassen"]))
                     ?>
                     <a href="OverzichtKlas.php" class="nav-item nav-link active">Klassen     overzicht</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagina's</a>
                         <div class="dropdown-menu m-0">
                             <?php
                             session_start();
