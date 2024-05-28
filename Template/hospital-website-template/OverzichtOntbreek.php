@@ -108,7 +108,6 @@
                                 }
                                 echo '<a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord Aanpassen</a>';
                                 echo'<a href="index.php" class="dropdown-item">Afmelden</a>';
-
                                 ?>
                             </div>
                         </div>
@@ -271,13 +270,85 @@ if(isset($_POST["btnTerug"]))
 }
 
 // ------------------------------------------------Mail versturen-------------------------------------------------------------------
-    $to = 'tristand101006@student.gtibeveren.be'; // Extra ontvanger toevoegen via $_POST['mail'] indien nodig
-    $from = 'tristand101006@student.gtibeveren.be';
-    $fromName = 'GTI - EHBO';
+    if(isset($_POST['btnSend'])){
+        $query = "SELECT COLUMN_NAME 
+          FROM INFORMATION_SCHEMA.COLUMNS 
+          WHERE TABLE_SCHEMA = 'gtiictbeokcommon' 
+          AND TABLE_NAME = 'EHBO_dozen'
+          LIMIT 2, 999";
 
-    $subject = "Ontbrekende in EHBO doosjes";
+        if (mysqli_stmt_prepare($stmt, $query)) {
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
 
-    $htmlContent = "
+            while ($row = mysqli_fetch_assoc($res)) {
+
+
+                if($row['COLUMN_NAME']!="handschoenen")
+                {
+                    if(mysqli_stmt_prepare($stmt,"select lokaal from EHBO_dozen where ".$row['COLUMN_NAME']." = 'Niet Aanwezig'"))
+                    {
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        while ($row=mysqli_fetch_assoc($res))
+                        {
+                            $intLokalenOntbreek++;
+                            $LokalenOntbreek.=$row["lokaal"].", ";
+
+                        }
+
+                        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                        if ($intLokalenOntbreek != 0)
+                        {
+                            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                            $_SESSION['Ontbrekend'] = $Ontbreek;
+                            echo "$Ontbreek";
+                            $Message .= $Ontbreek."<br><br>";
+                        }
+                        else
+                        {
+                            echo "Er ontbreken geen ".$row['COLUMN_NAME'];
+                            $Message .= "Er ontbreken geen ". $row['COLUMN_NAME'];
+                        }
+
+                    }
+
+                }
+                else {
+                    if (mysqli_stmt_prepare($stmt, "select lokaal from EHBO_dozen where " . $row['COLUMN_NAME'] . " = 1")) {
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $intLokalenOntbreek++;
+                            $LokalenOntbreek .= $row["lokaal"] . ", ";
+
+                        }
+
+                        $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
+                        if ($intLokalenOntbreek != 0) {
+                            $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $row['COLUMN_NAME'] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                            $_SESSION['Ontbrekend'] = $Ontbreek;
+                            echo "$Ontbreek";
+                            $Message .= $Ontbreek."<br><br>";
+                        } else {
+                            echo "Er ontbreken geen " . $row['COLUMN_NAME'];
+                            $Message .= "Er ontbreken geen ".$row['COLUMN_NAME'];
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+
+        $to = 'tristand101006@student.gtibeveren.be'; // Extra ontvanger toevoegen via $_POST['mail'] indien nodig
+        $from = 'tristand101006@student.gtibeveren.be';
+        $fromName = 'GTI - EHBO';
+
+        $subject = "Ontbrekende in EHBO doosjes";
+
+        $htmlContent = "
     <html> 
     <head> 
         <title>Ontbreken EHBO doosjes</title> 
@@ -287,21 +358,21 @@ if(isset($_POST["btnTerug"]))
     </body>
     </html>";
 
-    // Set content-type header for sending HTML email
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-    // Additional headers
-    $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
-    $headers .= 'Cc: tristand101006@student.gtibeveren.be' . "\r\n";
+        // Additional headers
+        $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
+        $headers .= 'Cc: tristand101006@student.gtibeveren.be' . "\r\n";
 
-    // Send email
-    if (mail($to, $subject, $htmlContent, $headers)) {
-        echo 'ok';
-    } else {
-        echo 'Email sending failed.';
+        // Send email
+        if (mail($to, $subject, $htmlContent, $headers)) {
+            echo 'ok';
+        } else {
+            echo 'Email sending failed.';
+        }
     }
-
 
 
     if(isset($_POST["btnTerug"]))
