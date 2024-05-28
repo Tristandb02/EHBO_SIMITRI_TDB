@@ -156,7 +156,21 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
 
-    echo "<style>
+    echo '<style>
+        input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -181,7 +195,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         input[type=radio], input[type=number] {
             margin-top: 5px;
         }
-    </style>";
+    </style>';
 
     echo "<table><tr>";
     // Fetch column names and display them as table headers
