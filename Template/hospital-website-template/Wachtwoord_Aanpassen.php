@@ -220,13 +220,9 @@
     </html>
 
     <?php
-    $WWaangepast = "False";
     session_start();
 
-    if($WWaangepast = "True")
-    {
 
-    }
 
     $mail = $_SESSION["Mail"];
     //echo $_SESSION["Mail"];
@@ -284,8 +280,11 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
+                                echo "Wachtwoord aangepast";
                                 header("Location: index.php");
-                                $WWaangepast = "True";
+
+
+
 
 
 
@@ -316,6 +315,7 @@
         } else {
             echo '<br>verbinding niet gelukt' . mysqli_connect_error();
         }
+
     }
 
     ?>
