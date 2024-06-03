@@ -278,7 +278,7 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
-                                echo "<h3>Wachtwoord werd aangepast</h3>";
+                                header("location: index.php");
 
 
 
@@ -309,7 +309,6 @@
         } else {
             echo '<br>verbinding niet gelukt' . mysqli_connect_error();
         }
-
     }
 
     ?>
