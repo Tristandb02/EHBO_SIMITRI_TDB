@@ -222,6 +222,8 @@
     <?php
     session_start();
 
+
+
     $mail = $_SESSION["Mail"];
     //echo $_SESSION["Mail"];
 
@@ -278,7 +280,11 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
-                                echo "<h3>Wachtwoord werd aangepast</h3>";
+                                echo "Wachtwoord aangepast";
+                                header("Location: index.php");
+
+
+
 
 
 

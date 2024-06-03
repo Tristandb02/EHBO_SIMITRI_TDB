@@ -93,11 +93,11 @@ Authors: Tristan De Ben, Milan Van Wonterghem
     <label for="username">
         <i class="fas fa-user"></i>
     </label>
-        <input type="text" name="username" placeholder="Username" id="username" required><!-- input textbox voor de email -->
+        <input type="text" name="username" placeholder="Mailadres" id="username" required><!-- input textbox voor de email -->
     <label for="password">
         <i class="fas fa-lock"></i>
     </label>
-        <input type="password" name="password" placeholder="Password" id="password" required><!-- input textbox voor het wachtwoord -->
+        <input type="password" name="password" placeholder="Wachtwoord" id="password" required><!-- input textbox voor het wachtwoord -->
         <input type="submit" value="Login" Name="cmdSend">
 
 
