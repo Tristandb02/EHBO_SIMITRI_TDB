@@ -220,7 +220,13 @@
     </html>
 
     <?php
+    $WWaangepast = "False";
     session_start();
+
+    if($WWaangepast = "True")
+    {
+
+    }
 
     $mail = $_SESSION["Mail"];
     //echo $_SESSION["Mail"];
@@ -278,7 +284,8 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
-                                header("location: index.php");
+                                header("Location: index.php");
+                                $WWaangepast = "True";
 
 
 
