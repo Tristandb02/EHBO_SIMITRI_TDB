@@ -165,12 +165,12 @@
         $namenLL = array();
 
         while ($row = mysqli_fetch_assoc($result)) {
-            array_push($namenLL, $row["gebruikerid"] . $row["achternaam"] . " " . $row["voornaam"]);
+            array_push($namenLL, $row["gebruikerid"] . $row["achternaam"] . " " . $row["voornaam"]);//dus in de array staat 1De ben Tristan, 2Machrand Simon, ...
         }
     }
 
     // Query to fetch data from the table
-    $query = "SELECT logid, idLeerkracht, datum, lokaal, status FROM EHBO_logboek";
+    $query = "SELECT logid, idLeerkracht, datum, lokaal, status FROM EHBO_logboek order by logid DESC";
     $result = mysqli_query($link, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -182,6 +182,7 @@
             echo "<tr><td>" . $row["logid"] . "</td><td>";
             for ($i = 0; $i < sizeof($namenLL); $i++) {
                 if (substr($namenLL[$i], 0, 1) == $row["idLeerkracht"]) {
+
                     echo substr($namenLL[$i], 1);
                 }
             }

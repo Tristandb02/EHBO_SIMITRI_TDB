@@ -260,7 +260,9 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
         echo "</table>";
 
-        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'><input type='submit' value='Item Toevoegen' name='btnPagToev'><input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'>";
+        echo "</tr><input type='submit' value='Aanpassen' name='btnAanpassen'>";
+        //echo "<input type='submit' value='Item Toevoegen' name='btnPagToev'>";
+        echo "<input type='submit' value='Terug naar klassen overzicht' name='btnNaarKlassen'>";
 
 
 
