@@ -1,4 +1,9 @@
-
+<?php
+if(isset($_POST['cmdBack']))
+{
+    header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -205,12 +210,13 @@
             <h1>Wachtwoord aanpassen</h1>
 
 
-            <input type="password" name="OudWW" placeholder="Oud Wachtwoord" id="username" required><!-- input textbox voor de email -->
+            <input type="password" name="OudWW" placeholder="Oud Wachtwoord" id="username" ><!-- input textbox voor de email -->
 
-            <input type="password" name="NieuwWW" placeholder="Nieuw Wachtwoord" id="password" required><!-- input textbox voor het wachtwoord -->
+            <input type="password" name="NieuwWW" placeholder="Nieuw Wachtwoord" id="password" ><!-- input textbox voor het wachtwoord -->
 
-            <input type="password" name="HerhaalWW" placeholder="Herhaal Wachtwoord" id="password" required>
+            <input type="password" name="HerhaalWW" placeholder="Herhaal Wachtwoord" id="password" >
             <input type="submit" value="Pas Aan" Name="cmdSend">
+            <input type="submit" value="Ga terug" name="cmdBack">
 
             <p>Het standaard wachtwoord is Test123</p>
 
@@ -227,7 +233,7 @@
     $mail = $_SESSION["Mail"];
     //echo $_SESSION["Mail"];
 
-    if(isset($_POST['cmdSend'])) {
+    if(isset($_POST['cmdSend']) && isset($_POST['OudWW']) && isset($_POST['NieuwWW']) && isset($_POST['HerhaalWW'])) {
         //verbinding maken met de database
         include('Verbinding.php');
         //echo "button pushed";
@@ -281,7 +287,6 @@
                                 mysqli_stmt_execute($statement1);
 
                                 echo "Wachtwoord aangepast";
-                                header("Location: index.php"); /* -------------------------------------werkt niet---------------------------------------------------------*/
 
 
 
@@ -316,7 +321,16 @@
             echo '<br>verbinding niet gelukt' . mysqli_connect_error();
         }
 
+
     }
+    else
+    {
+        echo "Vul alle velde in alstublieft";
+    }
+
+
+
+
 
     ?>
 
