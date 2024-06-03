@@ -222,6 +222,8 @@
     <?php
     session_start();
 
+
+
     $mail = $_SESSION["Mail"];
     //echo $_SESSION["Mail"];
 
@@ -278,7 +280,11 @@
                                 }
                                 mysqli_stmt_execute($statement1);
 
-                                header("location: index.php");
+                                echo "Wachtwoord aangepast";
+                                header("Location: index.php"); /* -------------------------------------werkt niet---------------------------------------------------------*/
+
+
+
 
 
 
@@ -309,6 +315,7 @@
         } else {
             echo '<br>verbinding niet gelukt' . mysqli_connect_error();
         }
+
     }
 
     ?>
