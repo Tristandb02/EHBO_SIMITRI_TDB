@@ -281,7 +281,7 @@
                                 mysqli_stmt_execute($statement1);
 
                                 echo "Wachtwoord aangepast";
-                                header("Location: index.php");
+                                header("Location: index.php"); /* -------------------------------------werkt niet---------------------------------------------------------*/
 
 
 
