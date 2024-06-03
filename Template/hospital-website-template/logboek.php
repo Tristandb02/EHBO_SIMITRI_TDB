@@ -161,11 +161,13 @@
 
     $result = mysqli_query($link, "select gebruikerid, achternaam, voornaam from EHBO_gebruikers");
 
+
     if (mysqli_num_rows($result) > 0) {
         $namenLL = array();
 
         while ($row = mysqli_fetch_assoc($result)) {
             array_push($namenLL, $row["gebruikerid"] . $row["achternaam"] . " " . $row["voornaam"]);//dus in de array staat 1De ben Tristan, 2Machrand Simon, ...
+
         }
     }
 
@@ -180,11 +182,22 @@
             $idLL = $row["idLeerkracht"];
 
             echo "<tr><td>" . $row["logid"] . "</td><td>";
-            for ($i = 0; $i < sizeof($namenLL); $i++) {
-                if (substr($namenLL[$i], 0, 1) == $row["idLeerkracht"]) {
 
-                    echo substr($namenLL[$i], 1);
+            for ($i = 0; $i < sizeof($namenLL); $i++) {
+                for($aantalnummers=1;$aantalnummers<=3;$aantalnummers++)//aantal nummers die in de array vanvoor staan
+                {
+                    if(!is_numeric(substr($namenLL[$i], 0, $aantalnummers)))//als de substireng van het plaats nul tot het aantalnummers niet numeric is doe dan de if loop
+                    {
+                        if (substr($namenLL[$i], 0, $aantalnummers-1) == $row["idLeerkracht"]) {//pak dan het aantalnummers-1 want dat zal het ID zijn, en vergelijk dat met het id uit de DB
+
+                            echo substr($namenLL[$i], ($aantalnummers-1));//echo de naam
+                        }
+                        break;
+                    }
+
                 }
+
+
             }
 
             echo "</td><td>" . $row["datum"] . "</td><td>" . $row["lokaal"] . "</td><td>" . $row["status"] . "</td></tr>";

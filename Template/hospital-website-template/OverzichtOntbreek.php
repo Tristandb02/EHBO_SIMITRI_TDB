@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    input[type="submit"] {
+        width: 20%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .select-container {
+        margin-bottom: 15px;
+        width: 20%;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 16px;
+    }
+    .centered {
 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <title>MEDINOVA - Hospital Website Template</title>
@@ -158,13 +195,15 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "<tr>";
     echo "<html>
 <form method='post'>
+<div class='select-container' >
     <select name='Item' >";
     while ($row = mysqli_fetch_assoc($res)) {
 
         echo "<option value='" . $row['COLUMN_NAME'] . "'>" . $row['COLUMN_NAME'] . "</option>";
     }
+    echo "</select></div>";
 }
-echo "<input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
+echo "<br><input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
 echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
 
 
