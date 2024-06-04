@@ -182,6 +182,8 @@
             $idLL = $row["idLeerkracht"];
 
             echo "<tr><td>" . $row["logid"] . "</td><td>";
+            $gebruikergevonden=0;
+
 
             for ($i = 0; $i < sizeof($namenLL); $i++) {
                 for($aantalnummers=1;$aantalnummers<=3;$aantalnummers++)//aantal nummers die in de array vanvoor staan
@@ -191,6 +193,7 @@
                         if (substr($namenLL[$i], 0, $aantalnummers-1) == $row["idLeerkracht"]) {//pak dan het aantalnummers-1 want dat zal het ID zijn, en vergelijk dat met het id uit de DB
 
                             echo substr($namenLL[$i], ($aantalnummers-1));//echo de naam
+                            $gebruikergevonden=1;
                         }
                         break;
                     }
@@ -198,6 +201,11 @@
                 }
 
 
+
+            }
+            if($gebruikergevonden==0)
+            {
+                echo "Gebruiker verwijderd";
             }
 
             echo "</td><td>" . $row["datum"] . "</td><td>" . $row["lokaal"] . "</td><td>" . $row["status"] . "</td></tr>";
