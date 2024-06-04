@@ -125,7 +125,7 @@ if(isset($_POST['cmdSend'])) {
         //opbouwen van de query
         //query met een parameter
         $query = 'select * from EHBO_gebruikers where mail=?';
-        echo $query . '<br>';
+        //echo $query . '<br>';
 
         //tatement initialiseren op basis van de query
         $statement = mysqli_stmt_init($link);
@@ -135,7 +135,7 @@ if(isset($_POST['cmdSend'])) {
 
             mysqli_stmt_bind_param($statement, 's', $mail);
             $mail = $_POST['username'];
-            //echo $mail.'<br>';
+            echo $mail.'<br>';
 
             //5a: statement uitvoeren
             mysqli_stmt_execute($statement);
