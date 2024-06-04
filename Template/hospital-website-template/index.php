@@ -135,7 +135,7 @@ if(isset($_POST['cmdSend'])) {
 
             mysqli_stmt_bind_param($statement, 's', $mail);
             $mail = $_POST['username'];
-            echo $mail.'<br>';
+            //echo $mail.'<br>';
 
             //5a: statement uitvoeren
             mysqli_stmt_execute($statement);
@@ -160,19 +160,24 @@ if(isset($_POST['cmdSend'])) {
                         {
                             header("location: Wachtwoord_Aanpassen.php");
                         }
-
+                        echo "<div style='text-align: center'>";
                         echo "inlog geslaagd"."<br>";
+                        echo "</div>";
 
 
                     }
                     else{
+                        echo "<div style='text-align: center'>";
                         echo "fout wachtwoord";
+                        echo "</div>";
                     }
 
                 }
                 else
                 {
+                    echo "<div style='text-align: center'>";
                     echo "Foutieve mail";
+                    echo "</div>";
                 }
 
 
