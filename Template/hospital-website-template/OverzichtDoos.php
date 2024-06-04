@@ -245,16 +245,16 @@ if (mysqli_stmt_prepare($stmt, $query)) {
 
                 switch ($columnName) {
                     case "schaar":
-                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                        echo "<td><input value='niet aanwezig' type='radio' name='" . $columnName . "'>niet aanwezig<br><input value='aanwezig' type='radio' name='" . $columnName . "'>aanwezig</td>";
                         break;
                     case "ontsmettingsmiddel":
-                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>";
+                        echo "<td><input value='niet aanwezig' type='radio' name='" . $columnName . "'>niet aanwezig<br><input value='aanwezig' type='radio' name='" . $columnName . "'>aanwezig</td>";
                         break;
                     case "handschoenen":
                         echo "<td>Aantal:<input type='number' min='0' style='width: 40px' name='" . $columnName . "'></td>";
                         break;
                     default:
-                        echo "<td><input value='Niet aanwezig' type='radio' name='" . $columnName . "'>Niet aanwezig<br><input value='Aanwezig' type='radio' name='" . $columnName . "'>Aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
+                        echo "<td><input value='niet aanwezig' type='radio' name='" . $columnName . "'>niet aanwezig<br><input value='aanwezig' type='radio' name='" . $columnName . "'>aanwezig</td>"; //de default is voor pleisters en documenten en als er een item wordt toegevoegd
                         break;
                 }
 
