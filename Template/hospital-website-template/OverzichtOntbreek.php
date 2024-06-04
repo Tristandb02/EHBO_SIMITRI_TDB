@@ -193,7 +193,38 @@ if(isset($_POST["Item"]))
             $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
             if ($intLokalenOntbreek != 0)
             {
-                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: <br> ".$LokalenOntbreek;
+                if ($intLokalenOntbreek > 1)
+                {
+                    $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ";
+                    switch ($_POST["Item"])
+                    {
+                        case "schaar":
+                            $Ontbreek .= "scharen in de volgende lokalen: ".$LokalenOntbreek;
+                            break;
+                        case "ontsmettingsmiddel":
+                            $Ontbreek .= "ontsmettingsmiddelen in de volgende lokalen: ".$LokalenOntbreek;
+                            break;
+                        default:
+                            $Ontbreek .= $_POST["Item"]." in de volgende lokalen: ".$LokalenOntbreek;
+                            break;
+                    }
+
+                } else
+                {
+                    $Ontbreek = "Er ontbreekt ".$intLokalenOntbreek." ";
+                    switch ($_POST["Item"])
+                    {
+                        case "pleisters":
+                            $Ontbreek .= "pleister in de het volgende lokaal: ".$LokalenOntbreek;
+                            break;
+                        case "documenten":
+                            $Ontbreek .= "document in het volgende lokaal: ".$LokalenOntbreek;
+                            break;
+                        default:
+                            $Ontbreek .= $_POST["Item"]." in het volgende lokaal: ".$LokalenOntbreek;
+                            break;
+                    }
+                }
                 $_SESSION['Ontbrekend'] = $Ontbreek;
                 echo "<div style='text-align: center'>";
                 echo "<br>$Ontbreek";
@@ -201,8 +232,27 @@ if(isset($_POST["Item"]))
             }
             else //Als er geen items ontbreken schrijven we dit naar het scherm
             {
+                $Ontbreek = "";
+                switch ($_POST["Item"])
+                {
+                    case "pleisters":
+                        $Ontbreek .= "Er ontbreken geen pleisters";
+                        break;
+                    case "documenten":
+                        $Ontbreek .= "Er ontbreken geen documenten";
+                        break;
+                    case "schaar":
+                        $Ontbreek .= "Er ontbreken geen scharen";
+                        break;
+                    case "ontsmettingsmiddel":
+                        $Ontbreek .= "Er ontbreken geen ontsmettingsmiddelen";
+                        break;
+                    default:
+                        $Ontbreek .= "Er ontbreken geen".$row["COLUMN_NAME"];
+                        break;
+                }
                 echo "<div style='text-align: center'>";
-                echo "<br>Er ontbreken geen ".$_POST["Item"]."<br>";
+                echo "<br>$Ontbreek<br>";
                 echo "</div>";
             }
 
@@ -220,10 +270,13 @@ if(isset($_POST["Item"]))
             }
 
             $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
-            if ($intLokalenOntbreek != 0) {
+            if ($intLokalenOntbreek != 0)
+            {
                 $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $_POST["Item"] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
+                echo "<div style='text-align: center'>";
+                echo "<br>$Ontbreek<br>";
+                echo "</div>";
                 $_SESSION['Ontbrekend'] = $Ontbreek;
-                echo "$Ontbreek";
 
             } else {
                 echo "Er ontbreken geen " . $_POST["Item"];
