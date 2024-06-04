@@ -168,7 +168,7 @@ if(isset($_POST['cmdSend'])) {
                     }
                     else{
                         echo "<div style='text-align: center'>";
-                        echo "fout wachtwoord";
+                        echo "Foutief wachtwoord";
                         echo "</div>";
                     }
 
