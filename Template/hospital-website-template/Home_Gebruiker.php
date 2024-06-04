@@ -49,7 +49,7 @@
                         <a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>
                         <a href="OverzichtKlas.php" class="nav-item nav-link">Klassen overzicht</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profiel</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagina's</a>
                             <div class="dropdown-menu m-0">
                                 <a href="Wachtwoord_Aanpassen.php" class="dropdown-item">Wachtwoord aanpassen</a>
                                 <a href="index.php" class="dropdown-item">Afmelden</a>
@@ -70,7 +70,7 @@
             <div class="row justify-content-start">
                 <div class="col-lg-8 text-center text-lg-start">
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">EHBO</h5>
-                    <h1 class="display-1 text-white mb-md-4">Welkom Gebruiker</h1>
+                    <h1 class="display-1 text-white mb-md-4">Welkom <?php session_start(); echo "$_SESSION[naam]" ?></h1>
                     <div class="pt-2">
                         <a href="OverzichtKlas.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Klassen overzicht</a>
                         <a href="index.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Afmelden</a>
