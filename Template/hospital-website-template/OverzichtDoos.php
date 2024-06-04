@@ -227,11 +227,16 @@ if (mysqli_stmt_prepare($stmt, $query)) {
         echo "<tr>";
         foreach ($data_row as $key => $value) {
             if ($key >= 2) { // Skipping the first two columns
-                if($value!=null) {
-
+                if($value==0)
+                {
                     echo "<td>" . $value . "</td>";
                 }
+                else {
+                    if ($value != null) {
 
+                        echo "<td>" . $value . "</td>";
+                    }
+                }
             }
         }
         echo "</tr><tr>";
@@ -292,19 +297,31 @@ if(isset($_POST["btnAanpassen"]))
     $query="UPDATE EHBO_dozen set ";
     foreach ($columnNames as $columnName)
     {
-        if($_POST[$columnName])
+        if($columnName=="handschoenen")
         {
-
-            $query.= $columnName." = '".$_POST[$columnName]."', ";
-            if($aangepast=="")
+            if(isset($_POST['handschoenen']) && $_POST['handschoenen'] >= 0)
             {
-                $aangepast.=$columnName;
-            }else{
-                $aangepast.=", ".$columnName;
+                $query .= $columnName . " = '" . $_POST[$columnName] . "', ";
+                if ($aangepast == "") {
+                    $aangepast .= $columnName;
+                } else {
+                    $aangepast .= ", " . $columnName;
+                }
+
             }
+        }
+        else {
+            if ($_POST[$columnName]) {
+
+                $query .= $columnName . " = '" . $_POST[$columnName] . "', ";
+                if ($aangepast == "") {
+                    $aangepast .= $columnName;
+                } else {
+                    $aangepast .= ", " . $columnName;
+                }
 
 
-
+            }
         }
     }
     //echo $query;
