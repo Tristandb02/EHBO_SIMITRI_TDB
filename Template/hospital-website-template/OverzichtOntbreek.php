@@ -389,9 +389,9 @@ if(isset($_POST["btnTerug"]))
         // Verstuur mail
         echo "<div style='text-align: center'>";
         if (mail($to, $subject, $htmlContent, $headers)) {
-            echo "<br>Email is verzonden<br>";
+            echo "<br>Email is verzonden.<br>";
         } else {
-            echo "<br>Email is verzonden<br>";
+            echo "<br>Fout bij mail verzenden, probeer opnieuw.<br>";
         }
 
         echo "</div>";
