@@ -204,7 +204,7 @@ if(isset($_POST['cmdSend'])) {
             $_SESSION["Rol"] = "gebruiker";
             if($_SESSION["QRgescand"]=="ja")
             {
-                header("location: overzichtklas.php");
+                header("location: OverzichtKlas.php");
             }
             else {
                 header("location: Home_Gebruiker.php");
@@ -215,7 +215,7 @@ if(isset($_POST['cmdSend'])) {
             $_SESSION["Rol"] = "beheerder";
             if($_SESSION["QRGescand"]=="ja")
             {
-                header("location: overzichtklas.php");
+                header("location: OverzichtKlas.php");
             }
             else {
                 header("location: Home_Beheerder.php");
