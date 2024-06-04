@@ -306,15 +306,31 @@ if(isset($_POST["btnTerug"]))
                                 }
                             }
                             $_SESSION['Ontbrekend'] = $Ontbreek;
-                            echo "$Ontbreek";
                             $Message .= $Ontbreek."<br><br>";
                             $intLokalenOntbreek = 0;
                             $LokalenOntbreek = "";
                         }
                         else
                         {
-                            echo "Er ontbreken geen ".$row['COLUMN_NAME'];
                             $Message .= "Er ontbreken geen ". $row['COLUMN_NAME'];
+                            switch ($row["COLUMN_NAME"])
+                            {
+                                case "pleisters":
+                                    $Ontbreek .= "Er ontbreken geen pleisters";
+                                    break;
+                                case "documenten":
+                                    $Ontbreek .= "Er ontbreken geen documenten";
+                                    break;
+                                case "schaar":
+                                    $Ontbreek .= "Er ontbreken geen scharen";
+                                    break;
+                                case "ontsmettingsmiddel":
+                                    $Ontbreek .= "Er ontbreken geen ontsmettingsmiddelen";
+                                    break;
+                                default:
+                                    $Ontbreek .= "Er ontbreken geen".$row["COLUMN_NAME"];
+                                    break;
+                            }
                         }
 
                     }
@@ -334,12 +350,10 @@ if(isset($_POST["btnTerug"]))
                         if ($intLokalenOntbreek != 0) {
                             $Ontbreek = "Er zijn  " . $intLokalenOntbreek . " lokalen waar er maar 1 paar " . $row['COLUMN_NAME'] . "  ligt, en dat is in de volgende lokalen: " . $LokalenOntbreek;
                             $_SESSION['Ontbrekend'] = $Ontbreek;
-                            echo "$Ontbreek";
                             $Message .= $Ontbreek."<br><br>";
                             $intLokalenOntbreek = 0;
                             $LokalenOntbreek = "";
                         } else {
-                            echo "Er ontbreken geen " . $row['COLUMN_NAME'];
                             $Message .= "Er ontbreken geen ".$row['COLUMN_NAME'];
                         }
 
@@ -373,11 +387,15 @@ if(isset($_POST["btnTerug"]))
         $headers .= 'From: ' . $fromName . '<' . $from . '>' . "\r\n";
 
         // Verstuur mail
+        echo "<div style='text-align: center'>";
         if (mail($to, $subject, $htmlContent, $headers)) {
-            echo 'ok';
+            echo "<br>Email is verzonden<br>";
         } else {
-            echo 'Email sending failed.';
+            echo "<br>Email is verzonden<br>";
         }
+
+        echo "</div>";
+
     }
 
 
