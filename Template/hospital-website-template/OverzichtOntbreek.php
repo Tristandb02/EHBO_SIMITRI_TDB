@@ -326,10 +326,35 @@ if(isset($_POST["btnTerug"]))
                         {
                             if ($intLokalenOntbreek > 1)
                             {
-                                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ";
+                                switch ($row["COLUMN_NAME"])
+                                {
+                                    case "schaar":
+                                        $Ontbreek .= "scharen in de volgende lokalen: ".$LokalenOntbreek;
+                                        break;
+                                    case "ontsmettingsmiddel":
+                                        $Ontbreek .= "ontsmettingsmiddelen in de volgende lokalen: ".$LokalenOntbreek;
+                                        break;
+                                    default:
+                                        $Ontbreek .= $row["COLUMN_NAME"]."in de volgende lokalen: ".$LokalenOntbreek;
+                                        break;
+                                }
+
                             } else
                             {
-                                $Ontbreek = "Er ontbreekt ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                                $Ontbreek = "Er ontbreekt ".$intLokalenOntbreek." ";
+                                switch ($row["COLUMN_NAME"])
+                                {
+                                    case "pleisters":
+                                        $Ontbreek .= "pleister in de het volgende lokaal: ".$LokalenOntbreek;
+                                        break;
+                                    case "documenten":
+                                        $Ontbreek .= "document in het volgende lokaal: ".$LokalenOntbreek;
+                                        break;
+                                    default:
+                                        $Ontbreek .= $row["COLUMN_NAME"]."in het volgende lokaal: ".$LokalenOntbreek;
+                                        break;
+                                }
                             }
                             $_SESSION['Ontbrekend'] = $Ontbreek;
                             echo "$Ontbreek";
