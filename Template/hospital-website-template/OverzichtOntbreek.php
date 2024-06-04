@@ -193,15 +193,17 @@ if(isset($_POST["Item"]))
             $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
             if ($intLokalenOntbreek != 0)
             {
-                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: <br> ".$LokalenOntbreek;
                 $_SESSION['Ontbrekend'] = $Ontbreek;
-                echo "$Ontbreek";
-
+                echo "<div style='text-align: center'>";
+                echo "<br>$Ontbreek";
+                echo "</div>";
             }
             else //Als er geen items ontbreken schrijven we dit naar het scherm
             {
-                echo "Er ontbreken geen ".$_POST["Item"];
-
+                echo "<div style='text-align: center'>";
+                echo "<br>Er ontbreken geen ".$_POST["Item"]."<br>";
+                echo "</div>";
             }
 
         }
