@@ -135,7 +135,7 @@ if(isset($_POST['cmdSend'])) {
 
             mysqli_stmt_bind_param($statement, 's', $mail);
             $mail = $_POST['username'];
-            echo $mail.'<br>';
+            //echo $mail.'<br>';
 
             //5a: statement uitvoeren
             mysqli_stmt_execute($statement);
