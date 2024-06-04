@@ -324,7 +324,13 @@ if(isset($_POST["btnTerug"]))
                         $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
                         if ($intLokalenOntbreek != 0)
                         {
-                            $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                            if ($intLokalenOntbreek > 1)
+                            {
+                                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                            } else
+                            {
+                                $Ontbreek = "Er ontbreekt ".$intLokalenOntbreek." ".$row['COLUMN_NAME']."  in de volgende lokalen: ".$LokalenOntbreek;
+                            }
                             $_SESSION['Ontbrekend'] = $Ontbreek;
                             echo "$Ontbreek";
                             $Message .= $Ontbreek."<br><br>";
