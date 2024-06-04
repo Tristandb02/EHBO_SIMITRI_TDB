@@ -102,10 +102,10 @@
                         <?php
                         session_start();
                         if ($_SESSION['Rol'] == 'beheerder'){
-                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Beheerder.php" class="nav-item nav-link ">Home</a>';
                         }
                         else {
-                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link active">Home</a>';
+                            echo '<a href="Home_Gebruiker.php" class="nav-item nav-link ">Home</a>';
                         }
 
                         ?>
@@ -137,60 +137,7 @@
             </nav>
         </div>
     </div>
-    <!-- Navbar End -->
 
-
-    <!-- Testimonial Start -->
-    <!--<div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
-                <h1 class="display-4">Patients Say About Our Services</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-1.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-2.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-3.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
-                                </div>
-                            </div>
-                            <p class="fs-4 fw-normal"></p>
-                            <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">Profession</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
     <?php
 include 'Verbinding.php';
 $query = "SELECT COLUMN_NAME 
@@ -210,7 +157,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "<tr>";
     echo "<html>
 <form method='post'>
-<div class='select-container' >
+<div class='select-container' style='margin-left: 30%; width: 100%'>
     <select name='Item' >";
     while ($row = mysqli_fetch_assoc($res)) {
 
@@ -219,7 +166,7 @@ if (mysqli_stmt_prepare($stmt, $query)) {
     echo "</select></div>";
 }
 
-echo "<br><input type='submit' name='btnZoek' value='Laat zien'><br><input type='submit' name='btnTerug' value='Ga terug'><br>";
+echo "<br><input type='submit' name='btnZoek' value='Laat zien'><br>";
 echo "<input type='submit' name='btnSend' value='Verstuur op mail'>";
 
 
@@ -246,15 +193,17 @@ if(isset($_POST["Item"]))
             $LokalenOntbreek = substr($LokalenOntbreek, 0, -2);
             if ($intLokalenOntbreek != 0)
             {
-                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: ".$LokalenOntbreek;
+                $Ontbreek = "Er ontbreken ".$intLokalenOntbreek." ".$_POST["Item"]."  in de volgende lokalen: <br> ".$LokalenOntbreek;
                 $_SESSION['Ontbrekend'] = $Ontbreek;
-                echo "$Ontbreek";
-
+                echo "<div style='text-align: center'>";
+                echo "<br>$Ontbreek";
+                echo "</div>";
             }
             else //Als er geen items ontbreken schrijven we dit naar het scherm
             {
-                echo "Er ontbreken geen ".$_POST["Item"];
-
+                echo "<div style='text-align: center'>";
+                echo "<br>Er ontbreken geen ".$_POST["Item"]."<br>";
+                echo "</div>";
             }
 
         }
