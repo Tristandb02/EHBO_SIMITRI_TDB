@@ -192,7 +192,15 @@
             echo "<td>{$row['voornaam']}</td>";
             echo "<td>{$row['mail']}</td>";
             echo "<td>{$row['rol']}</td>";
-            echo '<td><button type="submit" value='.$row["gebruikerid"].' name="btnVerwijder" >Verwijder</button></td>';
+            if($row["gebruikerid"]==$_SESSION["id"])
+            {
+                echo '<td>Dit bent u</td>';
+            }
+            else
+            {
+                echo '<td><button type="submit" value='.$row["gebruikerid"].' name="btnVerwijder" >Verwijder</button></td>';
+            }
+
             echo '</tr>';
         }
         echo '</table>';
